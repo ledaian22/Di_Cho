@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.262"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/di_cho" />
 
     <ImageView
         android:id="@+id/logo1"
@@ -39,6 +39,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.934"
-        app:srcCompat="@drawable/hoaqua" />
+        app:srcCompat="@drawable/hoa_qua" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
