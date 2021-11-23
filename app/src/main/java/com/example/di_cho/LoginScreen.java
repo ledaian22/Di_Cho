@@ -12,20 +12,20 @@ import com.example.Adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginScreen extends AppCompatActivity {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private TabLayout tbl_login;
+    private ViewPager vpg_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        tabLayout = findViewById(R.id.tab_layout);
-        viewPager = findViewById(R.id.view_pager);
+        tbl_login = findViewById(R.id.tbl_login);
+        vpg_login = findViewById(R.id.vpg_login);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPager.setAdapter(viewPagerAdapter);
+        vpg_login.setAdapter(viewPagerAdapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tbl_login.setupWithViewPager(vpg_login);
     }
 }
