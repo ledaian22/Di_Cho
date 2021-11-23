@@ -1,38 +1,55 @@
 package com.example.di_cho;
-    // Hoàng Bá Minh thiết kế giao diện
-    //
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+import android.view.MenuItem;
+
+import com.example.fragment.HomeFragment;
+import com.example.fragment.MenuFragment;
+import com.example.fragment.MoreFragment;
+import com.example.fragment.UserFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_SCREEN = 3000;
-    Animation topAnimation;
-    ImageView logo_SplashScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //anh xa
         setContentView(R.layout.activity_main);
-
-        topAnimation = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        logo_SplashScreen = findViewById(R.id.logo_SplashScreen);
-        logo_SplashScreen.setAnimation(topAnimation);
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginScreen.class);
-                startActivity(intent);
-                finish();
-            }
-        },SPLASH_SCREEN);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        //Xu ly click item
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frament_container,
+                new HomeFragment()).commit();
     }
+    //Xu ly bam chon fragment
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()){
+                case R.id.nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.nav_menu:
+                    selectedFragment = new MenuFragment();
+                    break;
+                case R.id.nav_user:
+                    selectedFragment = new UserFragment();
+                    break;
+                case R.id.nav_more:
+                    selectedFragment = new MoreFragment();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.frament_container,
+                    selectedFragment).commit();
+            return true;
+        }
+    };
 }
