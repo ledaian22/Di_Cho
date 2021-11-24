@@ -12,7 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
-    private static int SPLASH_SCREEN = 3000;
     Animation topAnimation;
     ImageView logo_SplashScreen;
 
@@ -21,18 +20,13 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
 
-        topAnimation = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        logo_SplashScreen = findViewById(R.id.logo_SplashScreen);
-        logo_SplashScreen.setAnimation(topAnimation);
-
-
-        new Handler().postDelayed(new Runnable() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, LoginScreen.class);
+                Intent intent = new Intent(SplashScreen.this,MainActivity.class);
                 startActivity(intent);
-                finish();
             }
-        },SPLASH_SCREEN);
+        },2000);
     }
 }
