@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Di_Cho">
         <activity
+            android:name=".IntroSlide2"
+            android:exported="false" />
+        <activity
+            android:name=".IntroSlide1"
+            android:exported="false" />
+        <activity
             android:name="com.example.WebMenu"
             android:exported="false" />
         <activity
@@ -28,7 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
