@@ -1,6 +1,6 @@
 package com.example.di_cho;
-    // Hoàng Bá Minh thiết kế giao diện
-    //
+// Hoàng Bá Minh thiết kế giao diện
+//
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SplashScreen extends AppCompatActivity {
-    Animation topAnimation;
-    ImageView logo_SplashScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,24 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this,LoginScreen.class);
-                startActivity(intent);
+                nextActivity();
             }
-        },2000);
+        }, 2000);
+
+
+    }
+
+    private void nextActivity() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            //Chưa đăng nhập
+            Intent intent = new Intent(this, LoginScreen.class);
+            startActivity(intent);
+        } else {
+            //Đã đăng nhập
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        finish();
     }
 }
