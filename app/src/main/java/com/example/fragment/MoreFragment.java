@@ -34,6 +34,7 @@ public class MoreFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), LoginScreen.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 

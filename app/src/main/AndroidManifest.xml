@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Di_Cho">
         <activity
+            android:name=".AdminScreen"
+            android:exported="true" />
+        <activity
             android:name=".IntroSlide2"
             android:exported="false" />
         <activity
@@ -21,16 +24,14 @@
             android:name="com.example.WebMenu"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
-            android:exported="true">
-
-        </activity>
+            android:name=".MainActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".LoginScreen"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+            android:name=".SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

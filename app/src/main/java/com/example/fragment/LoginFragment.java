@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.di_cho.AdminScreen;
 import com.example.di_cho.LoginScreen;
 import com.example.di_cho.MainActivity;
 import com.example.di_cho.R;
@@ -87,6 +88,11 @@ public class LoginFragment extends Fragment {
 
         if (Username.isEmpty() || Password.isEmpty()) {
             Toast.makeText(getActivity(), "Nhập tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+        } else if (Username.equals("admin") && Password.equals("admin")) {
+            Intent intent = new Intent(getActivity(), AdminScreen.class);
+            startActivity(intent);
+            Toast.makeText(getActivity(), "Bạn đã đăng nhập với quyền quản trị cao nhất", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
         } else {
             auth.signInWithEmailAndPassword(Username, Password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
