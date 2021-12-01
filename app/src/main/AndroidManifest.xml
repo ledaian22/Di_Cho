@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Di_Cho">
         <activity
+            android:name=".ForgotpassScreen"
+            android:exported="true" />
+        <activity
             android:name=".AdminScreen"
             android:exported="true" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LoginScreen"
             android:exported="false" />

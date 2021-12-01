@@ -17,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.di_cho.AdminScreen;
+import com.example.di_cho.ForgotpassScreen;
 import com.example.di_cho.LoginScreen;
 import com.example.di_cho.MainActivity;
 import com.example.di_cho.R;
@@ -33,6 +35,7 @@ import java.util.concurrent.Executor;
 
 public class LoginFragment extends Fragment {
     EditText edtUsername, edtPassword;
+    TextView tvquenMatKhau;
     Button btnLogin;
     CheckBox cb_pass;
 
@@ -68,6 +71,7 @@ public class LoginFragment extends Fragment {
         //ánh xạ
         edtUsername = v.findViewById(R.id.edtUsername);
         edtPassword = v.findViewById(R.id.edtPassword);
+        tvquenMatKhau = v.findViewById(R.id.tvquenMatKhau);
         btnLogin = v.findViewById(R.id.btnLogin);
         cb_pass = v.findViewById(R.id.cb_pass);
 
@@ -78,7 +82,20 @@ public class LoginFragment extends Fragment {
                 kiemTra();
             }
         });
+
+        //Xử lý quên mật khẩu
+        tvquenMatKhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quenMatKhau();
+            }
+        });
         return v;
+    }
+
+    private void quenMatKhau() {
+        Intent intent = new Intent(getActivity(), ForgotpassScreen.class);
+        startActivity(intent);
     }
 
     private void kiemTra() {
