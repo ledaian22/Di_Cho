@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/back"
@@ -25,117 +26,163 @@
         android:layout_height="56dp"
         android:src="@drawable/icon_buy"
         android:layout_alignParentEnd="true"/>
-    
+
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="163dp"
-        android:layout_height="150dp"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ho_so"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/avatar"/>
-    
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/txt_sua_thong_tin"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/avatar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:text="Sửa thông tin" />
+
+    <ImageView
+        android:src="@drawable/suathongtin_icon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_toStartOf="@+id/txt_sua_thong_tin"
+        android:layout_below="@+id/avatar"/>
+
+    <TextView
+        android:id="@+id/txt_cdc"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/txt_sua_thong_tin"
+        android:layout_centerHorizontal="true"
+        android:text="Chào Đi Chợ"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_dang_xuat"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/txt_cdc"
+        android:layout_centerHorizontal="true"
+        android:text="Đăng Xuất"
+        android:textSize="7sp" />
+
     <LinearLayout
         android:id="@+id/LnL_nguoi_dung"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/avatar"
+        android:layout_below="@+id/btn_dang_xuat"
+        android:layout_centerVertical="true"
         android:layout_marginTop="0dp"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
         android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Tên">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="text"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="text"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Số điện thoại">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="text"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Địa chỉ">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="text"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Mật khẩu">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="textPassword"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
             android:layout_margin="0dp"
             android:hint="Nhập lại mật khẩu">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/text_input_bg"
                 android:inputType="textPassword"
-                android:maxLines="1"
-                android:background="@drawable/text_input_bg"/>
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-    
+
     <Button
         android:id="@+id/btn_save_infor"
         android:layout_width="350dp"
