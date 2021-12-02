@@ -101,31 +101,7 @@ public class LoginFragment extends Fragment {
     private void kiemTra() {
         String Username = edtUsername.getText().toString().trim();
         String Password = edtPassword.getText().toString().trim();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        if (Username.isEmpty() || Password.isEmpty()) {
-            Toast.makeText(getActivity(), "Nhập tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
-        } else if (Username.equals("admin") && Password.equals("admin")) {
-            Intent intent = new Intent(getActivity(), AdminScreen.class);
-            startActivity(intent);
-            Toast.makeText(getActivity(), "Bạn đã đăng nhập với quyền quản trị cao nhất", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
-        } else {
-            auth.signInWithEmailAndPassword(Username, Password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Intent intent = new Intent(getActivity(), MainActivity.class);
-                                startActivity(intent);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(getActivity(), "Tài khoản không tồn tại",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
+
     }
 }

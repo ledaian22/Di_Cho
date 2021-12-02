@@ -52,6 +52,5 @@ public class LoginScreen extends AppCompatActivity {
     private void anhXa() {
         tbl_login = findViewById(R.id.tbl_login);
         vpg_login = findViewById(R.id.vpg_login);
-        fab_google = findViewById(R.id.fab_google);
     }
 }
