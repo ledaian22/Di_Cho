@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:flow_horizontalAlign="center"
+    android:layout_height="match_parent"
+    tools:context=".AdminAddStore">
+
+    <Button
+        android:id="@+id/btnAddDoAn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="102dp"
+        android:text="Add Do An"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddDoUong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Add Do Duong"
+        app:layout_constraintStart_toStartOf="@+id/btnAddDoAn"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddDoAn" />
+
+    <Button
+        android:id="@+id/btnAddTrangMieng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="Add Trang Mieng"
+        app:layout_constraintStart_toStartOf="@+id/btnAddDoUong"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddDoUong" />
+
+    <Button
+        android:id="@+id/btnAddDacBiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:text="Add Dac Biet"
+        app:layout_constraintStart_toStartOf="@+id/btnAddTrangMieng"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddTrangMieng" />
+</androidx.constraintlayout.widget.ConstraintLayout>
