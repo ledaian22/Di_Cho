@@ -29,7 +29,7 @@ public class DrinkMenuFragment extends Fragment {
 
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Do Uong");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Đồ uống");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
         return v;

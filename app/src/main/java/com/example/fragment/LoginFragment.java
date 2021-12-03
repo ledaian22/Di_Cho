@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.di_cho.AdminAddStore;
 import com.example.di_cho.AdminScreen;
 import com.example.di_cho.ForgotpassScreen;
 import com.example.di_cho.LoginScreen;
@@ -107,7 +108,7 @@ public class LoginFragment extends Fragment {
         if (Username.isEmpty() || Password.isEmpty()) {
             Toast.makeText(getActivity(), "Nhập tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
         } else if (Username.equals("admin") && Password.equals("admin")) {
-            Intent intent = new Intent(getActivity(), AdminScreen.class);
+            Intent intent = new Intent(getActivity(), AdminAddStore.class);
             startActivity(intent);
             Toast.makeText(getActivity(), "Bạn đã đăng nhập với quyền quản trị cao nhất", Toast.LENGTH_SHORT).show();
         } else {

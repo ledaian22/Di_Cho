@@ -29,7 +29,7 @@ public class SpecialMenuFragment extends Fragment {
 
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Dac Biet");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Khuyến mãi");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
         return v;

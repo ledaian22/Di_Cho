@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/cart_fragment_layout"
     android:layout_above="@+id/cart_fragment_layout"
     tools:context="com.example.fragment.CartFragment"
-    android:background="@color/black">
+    android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:backgroundTint="@color/white"
         android:layout_height="wrap_content">
@@ -20,18 +21,26 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/appbar"
         android:orientation="vertical"
         android:id="@+id/cart_ll"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/cart_icon"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="50dp"
-
-        android:text="Cart Fragment" />
+        android:textAlignment="center"
+        android:text="Bạn chưa có đơn hàng" />
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

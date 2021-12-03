@@ -30,7 +30,7 @@ public class DesertMenuFragment extends Fragment {
 
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Trang Mieng");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Tráng miệng");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
         return v;
