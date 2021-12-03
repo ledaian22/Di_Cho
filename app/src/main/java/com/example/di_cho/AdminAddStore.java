@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//Sơn Tùng
+
 public class AdminAddStore extends AppCompatActivity {
 Button addFood, addDrink, addDesert, addSpecial;
     @Override

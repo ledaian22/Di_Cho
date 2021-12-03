@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import Model.ParseItem;
 
+//Sơn Tùng
 
 public class MenuFragment extends Fragment implements MyAdapter.OnMenuListener {
     final static String urlAddress="https://www.24h.com.vn/upload/rss/amthuc.rss";

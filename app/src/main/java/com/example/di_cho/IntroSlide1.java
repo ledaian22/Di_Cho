@@ -1,7 +1,6 @@
 package com.example.di_cho;
 
 // Hoàng Bá Minh thiết kế giao diện
-//
 
 import androidx.appcompat.app.AppCompatActivity;
 

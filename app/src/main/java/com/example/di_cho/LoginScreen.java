@@ -15,6 +15,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+//Đại An Đăng nhập
+
 public class LoginScreen extends AppCompatActivity {
     private TabLayout tbl_login;
     private ViewPager vpg_login;

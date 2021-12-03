@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -67,7 +68,8 @@
         android:layout_below="@+id/txt_cdc"
         android:layout_centerHorizontal="true"
         android:text="Đăng Xuất"
-        android:textSize="7sp" />
+        android:textSize="7sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <LinearLayout
         android:id="@+id/LnL_nguoi_dung"

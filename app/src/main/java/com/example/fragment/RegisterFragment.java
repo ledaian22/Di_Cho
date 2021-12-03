@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.concurrent.Executor;
 
 import javax.xml.validation.Validator;
+//Đại An
 
 public class RegisterFragment extends Fragment {
     EditText edtUsername, edtPassword, edtAgPassword, edtPhonenumber;

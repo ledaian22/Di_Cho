@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+//Đại An chuyển màn
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
