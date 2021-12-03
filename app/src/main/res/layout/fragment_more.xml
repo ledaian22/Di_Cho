@@ -51,26 +51,66 @@
         android:id="@+id/txt_ban_hang"
         android:layout_width="345dp"
         android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/pale"
         android:gravity="center"
         android:text="Bán hàng cùng đi chợ"
         android:textSize="20dp"
-        android:background="@color/pale"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintTop_toBottomOf="@+id/txt_them"
-        app:layout_constraintEnd_toEndOf="@+id/fab_next_bh"/>
+        app:layout_constraintTop_toBottomOf="@+id/txt_them" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_next_bh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/next_icon"
-        android:backgroundTint="@color/pale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_ban_hang"
-        app:layout_constraintTop_toTopOf="@+id/txt_ban_hang"/>
+    <TextView
+        android:id="@+id/txt_don_hang"
+        android:layout_width="345dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/pale"
+        android:gravity="center"
+        android:text="Đơn hàng của tôi"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ban_hang" />
+
+    <TextView
+        android:id="@+id/txt_nhan_tin"
+        android:layout_width="345dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/pale"
+        android:gravity="center"
+        android:text="Tin nhắn"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_thong_bao" />
+
+    <TextView
+        android:id="@+id/txt_thong_tin_ud"
+        android:layout_width="345dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/pale"
+        android:gravity="center"
+        android:text="Thông tin về ứng dụng"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nhan_tin" />
+
+    <TextView
+        android:id="@+id/txt_thong_bao"
+        android:layout_width="345dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/pale"
+        android:gravity="center"
+        android:text="Thông báo"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_don_hang" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_don_hang"
@@ -82,31 +122,6 @@
         app:layout_constraintStart_toStartOf="@+id/txt_don_hang"
         app:layout_constraintBottom_toBottomOf="@+id/txt_don_hang"/>
 
-    <TextView
-        android:id="@+id/txt_don_hang"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Đơn hàng của tôi"
-        android:textSize="20dp"
-        android:background="@color/pale"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ban_hang"
-        app:layout_constraintEnd_toEndOf="@+id/fab_next_bh"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_next_dh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/next_icon"
-        android:backgroundTint="@color/pale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_don_hang"
-        app:layout_constraintTop_toTopOf="@+id/txt_don_hang"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_thong_bao"
         android:layout_width="wrap_content"
@@ -116,31 +131,6 @@
         app:layout_constraintTop_toTopOf="@+id/txt_thong_bao"
         app:layout_constraintStart_toStartOf="@+id/txt_thong_bao"
         app:layout_constraintBottom_toBottomOf="@+id/txt_thong_bao"/>
-
-    <TextView
-        android:id="@+id/txt_thong_bao"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Thông báo"
-        android:textSize="20dp"
-        android:background="@color/pale"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintTop_toBottomOf="@+id/txt_don_hang"
-        app:layout_constraintEnd_toEndOf="@+id/fab_next_tb"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_next_tb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/next_icon"
-        android:backgroundTint="@color/pale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_thong_bao"
-        app:layout_constraintTop_toTopOf="@+id/txt_thong_bao"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_nhan_tin"
@@ -152,31 +142,6 @@
         app:layout_constraintStart_toStartOf="@+id/txt_nhan_tin"
         app:layout_constraintBottom_toBottomOf="@+id/txt_nhan_tin"/>
 
-    <TextView
-        android:id="@+id/txt_nhan_tin"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Tin nhắn"
-        android:textSize="20dp"
-        android:background="@color/pale"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintTop_toBottomOf="@+id/txt_thong_bao"
-        app:layout_constraintEnd_toEndOf="@+id/fab_next_tn"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_next_tn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/next_icon"
-        android:backgroundTint="@color/pale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_nhan_tin"
-        app:layout_constraintTop_toTopOf="@+id/txt_nhan_tin"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_thong_tin"
         android:layout_width="wrap_content"
@@ -186,30 +151,5 @@
         app:layout_constraintTop_toTopOf="@+id/txt_thong_tin_ud"
         app:layout_constraintStart_toStartOf="@+id/txt_thong_tin_ud"
         app:layout_constraintBottom_toBottomOf="@+id/txt_thong_tin_ud"/>
-
-    <TextView
-        android:id="@+id/txt_thong_tin_ud"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Thông tin về ứng dụng"
-        android:textSize="20dp"
-        android:background="@color/pale"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nhan_tin"
-        app:layout_constraintEnd_toEndOf="@+id/fab_next_tt"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_next_tt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/next_icon"
-        android:backgroundTint="@color/pale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_thong_tin_ud"
-        app:layout_constraintTop_toTopOf="@+id/txt_thong_tin_ud"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

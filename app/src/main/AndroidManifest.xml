@@ -12,15 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Di_Cho">
         <activity
+            android:name=".SellScreen"
+            android:exported="false" />
+        <activity
+            android:name=".InfoappScreen"
+            android:exported="false" />
+        <activity
             android:name=".AdminAddStore"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".AdminAddProduct"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ForgotpassScreen"
             android:exported="true" />
@@ -38,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,9 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
