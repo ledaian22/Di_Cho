@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_admin_add_product.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_login_back_up.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_login_screen.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_register_back_up.xml" value="0.358695652173913" />
+        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_login.xml" value="0.358695652173913" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/button_bg.xml" value="0.290625" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/edit_text_bg.xml" value="0.290625" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/text_input_bg.xml" value="0.290625" />

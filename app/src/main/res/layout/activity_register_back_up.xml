@@ -1,50 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginBackUp">
-    <RelativeLayout
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
+    tools:context=".LoginScreen">
+
+    <ImageView
+        android:id="@+id/background1"
+        android:layout_width="446dp"
+        android:layout_height="287dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background1" />
+
+    <ImageView
+        android:id="@+id/hinh_tron"
+        android:layout_width="459dp"
+        android:layout_height="473dp"
+        android:layout_marginBottom="484dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <ImageView
+        android:id="@+id/rau"
+        android:layout_width="272dp"
+        android:layout_height="304dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ca_chua"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintVertical_bias="0.05"
+        app:srcCompat="@drawable/rau" />
+
+    <ImageView
+        android:id="@+id/ca_chua"
+        android:layout_width="202dp"
+        android:layout_height="162dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="401dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintVertical_bias="0.344"
+        app:srcCompat="@drawable/ca_chua" />
+
+    <ImageView
+        android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:id="@+id/ed_reg_name"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:id="@+id/ed_reg_phonenumber"
-            android:layout_below="@+id/ed_reg_name"
-            android:inputType="number"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:id="@+id/ed_reg_password"
-            android:layout_below="@+id/ed_reg_phonenumber"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"/>
+        android:layout_marginBottom="452dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/di_cho" />
 
+    <EditText
+        android:id="@+id/ed_reg_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintVertical_bias="0.056" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ed_reg_password"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="-98dp"
-            android:layout_marginTop="9dp"
-            android:text="Register" />
+    <EditText
+        android:id="@+id/ed_reg_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_reg_phonenumber"
+        app:layout_constraintVertical_bias="0.14" />
 
+    <EditText
+        android:id="@+id/ed_reg_phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_reg_name"
+        app:layout_constraintVertical_bias="0.095" />
 
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Ký"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_reg_password" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

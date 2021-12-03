@@ -20,7 +20,6 @@ import com.google.android.material.tabs.TabLayout;
 public class LoginScreen extends AppCompatActivity {
     private TabLayout tbl_login;
     private ViewPager vpg_login;
-    private FloatingActionButton fab_google;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +28,6 @@ public class LoginScreen extends AppCompatActivity {
 
         anhXa();
         viewPager();
-       //FloatingActionButton();
-    }
-
-    private void FloatingActionButton(){
-        fab_google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Configure Google Sign In
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                        .build();
-            }
-        });
     }
 
     private void viewPager() {

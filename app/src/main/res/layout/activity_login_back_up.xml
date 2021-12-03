@@ -1,71 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginBackUp">
-    <RelativeLayout
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
+    tools:context=".LoginScreen">
+
+    <ImageView
+        android:id="@+id/background1"
+        android:layout_width="446dp"
+        android:layout_height="287dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background1" />
+
+    <ImageView
+        android:id="@+id/hinh_tron"
+        android:layout_width="459dp"
+        android:layout_height="473dp"
+        android:layout_marginBottom="484dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <ImageView
+        android:id="@+id/rau"
+        android:layout_width="272dp"
+        android:layout_height="304dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ca_chua"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintVertical_bias="0.05"
+        app:srcCompat="@drawable/rau" />
+
+    <ImageView
+        android:id="@+id/ca_chua"
+        android:layout_width="202dp"
+        android:layout_height="162dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="401dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hinh_tron"
+        app:layout_constraintVertical_bias="0.344"
+        app:srcCompat="@drawable/ca_chua" />
+
+    <ImageView
+        android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:id="@+id/ed_login_PhoneNumer"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:id="@+id/ed_login_Password"
-            android:layout_below="@+id/ed_login_PhoneNumer"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember me"
-            android:id="@+id/chk_remember"
-            android:layout_below="@+id/ed_login_Password"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/chk_remember"
-            android:layout_centerInParent="true"
-            android:id="@+id/btnBackUpLogin"
-            android:layout_marginTop="10dp"
-            android:text="Login"/>
+        android:layout_marginBottom="452dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/di_cho" />
 
-        <Button
-            android:id="@+id/btnBackUpRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnBackUpLogin"
+    <EditText
+        android:id="@+id/ed_login_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_login_PhoneNumer"
+        app:layout_constraintVertical_bias="0.104" />
 
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="-98dp"
-            android:layout_marginTop="9dp"
-            android:text="Register" />
+    <EditText
+        android:id="@+id/ed_login_PhoneNumer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintVertical_bias="0.044" />
 
-        <TextView
-            android:id="@+id/tv_isAdminTrue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnBackUpRegister"
-            android:text="Admin?"
-            android:textSize="20dp"
-            android:layout_alignParentRight="true"/>
-        <TextView
-            android:id="@+id/tv_isAdminFalse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnBackUpRegister"
-            android:text="Not  Admin?"
-            android:textSize="20dp"
-            android:layout_alignParentLeft="true"/>
-    </RelativeLayout>
+    <CheckBox
+        android:id="@+id/chk_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_login_Password"
+        app:layout_constraintVertical_bias="0.177" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnBackUpLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Đăng nhập"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toStartOf="@+id/btnBackUpRegister"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chk_remember"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnBackUpRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="72dp"
+        android:text="Đăng ký"
+        app:layout_constraintBottom_toTopOf="@+id/rau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chk_remember"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_isAdminTrue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Admin?"
+        app:layout_constraintEnd_toStartOf="@+id/rau"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackUpLogin" />
+
+    <TextView
+        android:id="@+id/tv_isAdminFalse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Admin?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rau"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_isAdminTrue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
