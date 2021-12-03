@@ -109,7 +109,6 @@ public class LoginFragment extends Fragment {
             Intent intent = new Intent(getActivity(), AdminScreen.class);
             startActivity(intent);
             Toast.makeText(getActivity(), "Bạn đã đăng nhập với quyền quản trị cao nhất", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
         } else {
             auth.signInWithEmailAndPassword(Username, Password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -119,6 +118,7 @@ public class LoginFragment extends Fragment {
                                 // Sign in success, update UI with the signed-in user's information
                                 Intent intent = new Intent(getActivity(), MainActivity.class);
                                 startActivity(intent);
+                                getActivity().finish();
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(getActivity(), "Tài khoản không tồn tại",
