@@ -51,13 +51,12 @@ public class AdminAddProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_admin_add_product);
         InitUI();
         CategoryName = getIntent().getExtras().get("Category").toString();
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("ProductImage");
         loadingBar = new ProgressDialog(this);
-        ProductsRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Products");
+        ProductsRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Products");
         AddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +80,7 @@ public class AdminAddProduct extends AppCompatActivity {
         Pname = edName.getText().toString();
 
         if (ImageURI == null){
-            Toast.makeText(this,"Please selec picture",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please select picture",Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Description)){
             Toast.makeText(this,"Please write description",Toast.LENGTH_SHORT).show();
         }

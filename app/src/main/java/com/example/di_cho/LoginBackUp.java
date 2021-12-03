@@ -134,6 +134,7 @@ public class LoginBackUp extends AppCompatActivity {
                                 Toast.makeText(LoginBackUp.this,"Welcome",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent i  = new Intent(LoginBackUp.this, MainActivity.class);
+                                Prevalent.currentonlineUser = usersData;
                                 startActivity(i);
                             }
                         }
