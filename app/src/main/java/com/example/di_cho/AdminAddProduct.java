@@ -57,7 +57,7 @@ public class AdminAddProduct extends AppCompatActivity {
         CategoryName = getIntent().getExtras().get("Category").toString();
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("ProductImage");
         loadingBar = new ProgressDialog(this);
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        ProductsRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Products");
         AddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
