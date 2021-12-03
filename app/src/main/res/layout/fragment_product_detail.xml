@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.fragment.ProductDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--Image View-->
+        <ImageView
+            android:id="@+id/img_detail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+        <!--End Image View-->
+
+        <TextView
+            android:layout_below="@+id/img_detail"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="30dp"
+            android:id="@+id/tv_detail_pname"/>
+
+        <!--Price-->
+        <LinearLayout
+            android:id="@+id/price_holder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tv_detail_pname"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+
+                    android:text="Price"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="/mỗi phần" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--End Price-->
+
+        <!--Desc-->
+        <RelativeLayout
+            android:id="@+id/desc_holder"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/price_holder"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/tv_Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_detail_desc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_Description"
+                android:padding="10dp"
+                android:text="ABCXYZ" />
+        </RelativeLayout>
+        <!--EndDesc-->
+
+        <!--Quantity-->
+        <RelativeLayout
+            android:id="@+id/quantity_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/desc_holder"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Số lượng"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/quantity_counter"
+                android:layout_width="164dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:elevation="10dp"
+                app:backGroundColor="#FF9800"
+                app:finalNumber="10"
+                app:initialNumber="1"
+                app:textSize="10dp">
+
+            </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+
+        </RelativeLayout>
+
+        <!--EndQuantity-->
+
+        <!--Add to Cart-->
+
+                <Button
+                    android:id="@+id/btn_add_to_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/quantity_holder"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/rounded_shape"
+                    android:text="Thêm vào giỏ hàng" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

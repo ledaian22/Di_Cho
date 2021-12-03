@@ -10,7 +10,7 @@ import android.widget.Button;
 //Sơn Tùng
 
 public class AdminAddStore extends AppCompatActivity {
-Button addFood, addDrink, addDesert, addSpecial;
+Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,27 @@ Button addFood, addDrink, addDesert, addSpecial;
         addDrink = findViewById(R.id.btnAddDoUong);
         addDesert = findViewById(R.id.btnAddTrangMieng);
         addSpecial = findViewById(R.id.btnAddDacBiet);
+        logout = findViewById(R.id.btnAdminLogout);
+        checkOder = findViewById(R.id.btnCheckOder);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminAddStore.this,LoginBackUp.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        checkOder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminAddStore.this,AdminCheckOderActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
