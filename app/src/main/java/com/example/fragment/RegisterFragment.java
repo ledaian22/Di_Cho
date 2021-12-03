@@ -94,57 +94,24 @@ public class RegisterFragment extends Fragment {
         } else if (!password.equals(agPassword)) {
             Toast.makeText(getActivity(), "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
         } else {
-            loadingBar.setTitle("Tạo tài khoản");
-            loadingBar.setMessage("Vui lòng chờ");
-            loadingBar.setCanceledOnTouchOutside(false);
-            loadingBar.show();
-
-            ValidatephoneNumber(email, phoneNumber, password);
-        }
-    }
-
-    private void ValidatephoneNumber(String email, String phoneNumber, String password) {
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!(snapshot.child("Users").child(phoneNumber).exists())) {
-                    HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("email",email);
-                    userdataMap.put("phone",phoneNumber);
-                    userdataMap.put("password",password);
-
-                    RootRef.child("Users").child(phoneNumber).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                       if(task.isSuccessful()){
-                           Toast.makeText(getActivity(), "Bạn đã tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-                           loadingBar.dismiss();
-                           Intent intent = new Intent(getActivity(), LoginScreen.class);
-                           startActivity(intent);
-                       }else {
-                           loadingBar.dismiss();
-                           Toast.makeText(getActivity(), "Tạo tài khoản thất bại", Toast.LENGTH_SHORT).show();
-                       }
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(getActivity(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(),MainActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(getActivity(), "Tạo tài khoản thất bại",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
-
-
-                } else {
-                    Toast.makeText(getActivity(), "This " + phoneNumber + "alredy exists.", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
-                    Toast.makeText(getActivity(), "Vui lòng sử dụng số điện thoại khác", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(), LoginScreen.class);
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }
     }
 }
