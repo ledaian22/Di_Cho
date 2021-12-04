@@ -9,8 +9,10 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.di_cho.LoginScreen;
+//import com.example.di_cho.LoginScreen;
+import com.example.di_cho.AdminScreen;
 import com.example.di_cho.R;
+import com.example.di_cho.SplashScreen;
 import com.google.firebase.auth.FirebaseAuth;
 
 //Hoàng Bá minh giao diện
@@ -35,7 +37,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginScreen.class);
+                Intent intent = new Intent(getActivity(), SplashScreen.class);
                 startActivity(intent);
                 getActivity().finish();
             }

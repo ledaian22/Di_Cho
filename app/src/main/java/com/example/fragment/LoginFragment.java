@@ -1,133 +1,195 @@
-package com.example.fragment;
-// Hoàng Bá Minh thiết kế giao diện
+//package com.example.fragment;
+//// Hoàng Bá Minh thiết kế giao diện
+////
 //
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.di_cho.AdminAddStore;
-import com.example.di_cho.AdminScreen;
-import com.example.di_cho.ForgotpassScreen;
-import com.example.di_cho.LoginScreen;
-import com.example.di_cho.MainActivity;
-import com.example.di_cho.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.concurrent.Executor;
-
-//Đại An
-
-public class LoginFragment extends Fragment {
-    EditText edtUsername, edtPassword;
-    TextView tvquenMatKhau;
-    Button btnLogin;
-    CheckBox cb_pass;
-
-
-    public LoginFragment() {
-        // Required empty public constructor
-
-    }
-
-
-    public static LoginFragment newInstance() {
-        LoginFragment fragment = new LoginFragment();
-        return fragment;
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = LayoutInflater.from(getContext()).inflate(R.layout.fragment_login, container, false);
-
-        //ánh xạ
-        edtUsername = v.findViewById(R.id.edtUsername);
-        edtPassword = v.findViewById(R.id.edtPassword);
-        tvquenMatKhau = v.findViewById(R.id.tvquenMatKhau);
-        btnLogin = v.findViewById(R.id.btnLogin);
-        cb_pass = v.findViewById(R.id.cb_pass);
-
-        //Xử Lý nút đăng nhập
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                kiemTra();
-            }
-        });
-
-        //Xử lý quên mật khẩu
-        tvquenMatKhau.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quenMatKhau();
-            }
-        });
-        return v;
-    }
-
-    private void quenMatKhau() {
-        Intent intent = new Intent(getActivity(), ForgotpassScreen.class);
-        startActivity(intent);
-    }
-
-    private void kiemTra() {
-        String Username = edtUsername.getText().toString().trim();
-        String Password = edtPassword.getText().toString().trim();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        if (Username.isEmpty() || Password.isEmpty()) {
-            Toast.makeText(getActivity(), "Nhập tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
-        } else if (Username.equals("admin") && Password.equals("admin")) {
-            Intent intent = new Intent(getActivity(), AdminAddStore.class);
-            startActivity(intent);
-            Toast.makeText(getActivity(), "Bạn đã đăng nhập với quyền quản trị cao nhất", Toast.LENGTH_SHORT).show();
-        } else {
-            auth.signInWithEmailAndPassword(Username, Password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Intent intent = new Intent(getActivity(), MainActivity.class);
-                                startActivity(intent);
-                                getActivity().finish();
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(getActivity(), "Tài khoản không tồn tại",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
-    }
-}
+//import android.app.ProgressDialog;
+//import android.content.Intent;
+//import android.os.Bundle;
+//
+//import androidx.annotation.NonNull;
+//import androidx.annotation.Nullable;
+//import androidx.fragment.app.Fragment;
+//
+//import android.text.TextUtils;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.Button;
+//import android.widget.CheckBox;
+//import android.widget.EditText;
+//import android.widget.TextView;
+//import android.widget.Toast;
+//
+//import com.example.Prevalent.Prevalent;
+//import com.example.di_cho.AdminAddStore;
+//import com.example.di_cho.ForgotpassScreen;
+//import com.example.di_cho.LoginBackUp;
+//import com.example.di_cho.MainActivity;
+//import com.example.di_cho.R;
+//import com.google.firebase.database.DataSnapshot;
+//import com.google.firebase.database.DatabaseError;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.ValueEventListener;
+//
+//import Model.Users;
+//import io.paperdb.Paper;
+//
+////Đại An
+//
+//public class LoginFragment extends Fragment {
+//    EditText ed_login_PhoneNumber, ed_login_Password;
+//    Button btnBackUpLogin;
+//    CheckBox chk_remember;
+//    private ProgressDialog loadingBar;
+//    private TextView isAdmin, isNotAdmin;
+//    private String parentDbName = "Users";
+//
+//
+//
+//    public LoginFragment() {
+//        // Required empty public constructor
+//
+//    }
+//
+//
+//    public static LoginFragment newInstance() {
+//        LoginFragment fragment = new LoginFragment();
+//        return fragment;
+//    }
+//
+//
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//    }
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View v = LayoutInflater.from(getContext()).inflate(R.layout.fragment_login, container, false);
+//
+//        //Remember Password
+//        Paper.init(this.getActivity());
+//
+//        //check admin
+//        isNotAdmin.setVisibility(View.INVISIBLE);
+//
+//        isAdmin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isAdmin.setVisibility(View.INVISIBLE);
+//                isNotAdmin.setVisibility(View.VISIBLE);
+//                parentDbName="Admins";
+//            }
+//        });
+//        isNotAdmin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                isAdmin.setVisibility(View.VISIBLE);
+//                isNotAdmin.setVisibility(View.INVISIBLE);
+//                parentDbName="Users";
+//            }
+//        });
+//
+//        //ánh xạ
+//        ed_login_PhoneNumber = v.findViewById(R.id.ed_login_PhoneNumber);
+//        ed_login_Password = v.findViewById(R.id.ed_login_Password);
+//        btnBackUpLogin = v.findViewById(R.id.btnBackUpLogin);
+//        chk_remember = v.findViewById(R.id.chk_remember);
+//        isAdmin = v.findViewById(R.id.tv_isAdminTrue);
+//        isNotAdmin = v.findViewById(R.id.tv_isAdminFalse);
+//
+//        //Xử Lý nút đăng nhập
+//        btnBackUpLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                kiemTra();
+//            }
+//        });
+//
+//        return v;
+//    }
+//
+//
+//    private void kiemTra() {
+//        loadingBar = new ProgressDialog(this.getActivity());
+//
+//        String pass = ed_login_Password.getText().toString();
+//        String phone = ed_login_PhoneNumber.getText().toString();
+//        if (TextUtils.isEmpty(pass)){
+//            Toast.makeText(getActivity(),"Không được để trống mật khẩu",Toast.LENGTH_SHORT).show();
+//        } else if (TextUtils.isEmpty(phone)){
+//            Toast.makeText(getActivity(),"Không được để trống số điện thoại",Toast.LENGTH_SHORT).show();
+//        } else {
+//            loadingBar.setTitle("Login");
+//            loadingBar.setMessage("Login...");
+//            loadingBar.setCanceledOnTouchOutside(false);
+//            loadingBar.show();
+//
+//            AllowAccessToAccount(phone,pass);
+//        }
+//    }
+//
+//    private void AllowAccessToAccount(String phone, String pass) {
+//        if (chk_remember.isChecked()){
+//            Paper.book().write(Prevalent.UserPhoneKey,phone);
+//            Paper.book().write(Prevalent.UserPasswordeKey,pass);
+//        }
+//
+//
+//        final DatabaseReference rootRef;
+//        rootRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+//
+//        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.child(parentDbName).child(phone).exists()){
+//                    Users usersData = snapshot.child(parentDbName).child(phone).getValue(Users.class);
+//                    if (usersData.getPhone().equals(phone)){
+//                        if (usersData.getPass().equals(pass)){
+//                            //Check Login as Admin
+//                            if (parentDbName.equals("Admins")){
+//                                Toast.makeText(getActivity(),"Logged as Admin",Toast.LENGTH_SHORT).show();
+//                                loadingBar.dismiss();
+//                                Intent i  = new Intent(getActivity(), AdminAddStore.class);
+//                                startActivity(i);
+//                            }
+//                            //Check Login as User
+//                            else if (parentDbName.equals("Users")) {
+//                                Toast.makeText(getActivity(),"Welcome",Toast.LENGTH_SHORT).show();
+//                                loadingBar.dismiss();
+//                                Intent i  = new Intent(getActivity(), MainActivity.class);
+//                                Prevalent.currentonlineUser = usersData;
+//                                startActivity(i);
+//                            }
+//                        }
+//                        //Check Password
+//                        else {
+//                            Toast.makeText(getActivity(),"Incorrect Password",Toast.LENGTH_SHORT).show();
+//                            loadingBar.dismiss();
+//                        }
+//                    }
+//                }
+//                //Check if existing account
+//                else {
+//                    Toast.makeText(getActivity(),"Account do not exist",Toast.LENGTH_SHORT).show();
+//                    loadingBar.dismiss();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+//
+//}

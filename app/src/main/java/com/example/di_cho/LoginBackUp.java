@@ -79,12 +79,12 @@ public class LoginBackUp extends AppCompatActivity {
 
     private void InitUI() {
         edPhoneNumber = findViewById(R.id.ed_login_PhoneNumer);
-        edPassword = findViewById(R.id.ed_login_Password);
+        edPassword = findViewById(R.id.ed_login_Passwordd);
         btnRegister = findViewById(R.id.btnBackUpRegister);
         btnLogin = findViewById(R.id.btnBackUpLogin);
         chk_Remember = findViewById(R.id.chk_remember);
-        isAdmin = findViewById(R.id.tv_isAdminTrue);
-        isNotAdmin = findViewById(R.id.tv_isAdminFalse);
+        isAdmin = findViewById(R.id.tv_isAdminTruee);
+        isNotAdmin = findViewById(R.id.tv_isAdminFalsee);
 
     }
 

@@ -38,7 +38,7 @@ public class SplashScreen extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             //Chưa đăng nhập
-            Intent intent = new Intent(this, LoginScreen.class);
+            Intent intent = new Intent(this, LoginBackUp.class);
             startActivity(intent);
         } else {
             //Đã đăng nhập
