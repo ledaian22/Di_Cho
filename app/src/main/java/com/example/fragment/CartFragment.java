@@ -41,8 +41,8 @@ public class CartFragment extends Fragment {
  private Toolbar toolbar;
  private RecyclerView recyclerView;
  private TextView cartFee, totalFee;
- private int overTotalPrice = 0;
- private int shipFee =5000 ;
+ private static int overTotalPrice = 0;
+ private static int shipFee =0 ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,10 +69,11 @@ public class CartFragment extends Fragment {
                 holder.tvProductPrice.setText(model.getPrice());
                 holder.tvProductQuantity.setText("x"+model.getQuantity());
                 //Calculate Price [Total = overTotalPrice + oneTypeProductPrice]
-                int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                Log.d("Price",""+oneTypeProductPrice);
-                overTotalPrice = overTotalPrice + oneTypeProductPrice + shipFee;
-                cartFee.setText(Integer.valueOf(oneTypeProductPrice).toString());
+                int oneProductPrice = Integer.parseInt(model.getPrice());
+                int oneProductQuantity = Integer.parseInt(model.getQuantity());
+                int oneTypePPrice = oneProductPrice * oneProductQuantity;
+                overTotalPrice = overTotalPrice + oneTypePPrice + shipFee;
+                cartFee.setText(Integer.valueOf(oneTypePPrice).toString());
                 totalFee.setText((Integer.valueOf(overTotalPrice).toString()));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -145,8 +146,10 @@ public class CartFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onStop() {
+        super.onStop();
+        overTotalPrice = 0;
+        shipFee = 0;
 
     }
 

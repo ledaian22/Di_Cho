@@ -11,7 +11,7 @@
         android:layout_width="350dp"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/addimage_icon"
+        android:src="@drawable/icon_addimage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         />

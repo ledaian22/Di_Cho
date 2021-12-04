@@ -44,7 +44,7 @@ public class FoodMenuFragment extends Fragment {
         //Firebase Init
         ProductsRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Products");
 
-        //Firebase
+        //Firebase query
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(ProductsRef,Products.class).build();
@@ -125,13 +125,14 @@ public class FoodMenuFragment extends Fragment {
         return v;
     }
 
-
+    //Inflate ToolBar layout
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar_menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    //Move to CartFragment
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         FragmentManager fm = getFragmentManager();
