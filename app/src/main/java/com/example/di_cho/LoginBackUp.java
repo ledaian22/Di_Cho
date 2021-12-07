@@ -126,7 +126,7 @@ public class LoginBackUp extends AppCompatActivity {
                             if (parentDbName.equals("Admins")){
                                 Toast.makeText(LoginBackUp.this,"Logged as Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent i  = new Intent(LoginBackUp.this, AdminAddStore.class);
+                                Intent i  = new Intent(LoginBackUp.this, AdminControlPanel.class);
                                 startActivity(i);
                             }
                             //Check Login as User

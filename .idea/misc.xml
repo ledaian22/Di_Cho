@@ -6,13 +6,8 @@
         <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_admin_add_product.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_login_back_up.xml" value="0.33" />
         <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_login_screen.xml" value="0.33" />
-        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/activity_register_back_up.xml" value="0.358695652173913" />
-        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_desert_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_drink_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_food_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_login.xml" value="0.358695652173913" />
-        <entry key="..\:/AndroidProject/Di_Cho/app/src/main/res/layout/fragment_special_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/button_bg.xml" value="0.290625" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/edit_text_bg.xml" value="0.290625" />
         <entry key="..\:/Di_Cho/app/src/main/res/drawable/text_input_bg.xml" value="0.290625" />
@@ -32,7 +27,9 @@
         <entry key="app/src/main/res/drawable/rounded_shape.xml" value="0.265625" />
         <entry key="app/src/main/res/layout/activity_admin_add_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_admin_add_store.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_admin_check_oder.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_admin_screen.xml" value="0.15476190476190477" />
+        <entry key="app/src/main/res/layout/activity_admin_user_product.xml" value="0.26944444444444443" />
         <entry key="app/src/main/res/layout/activity_forgotpass_screen.xml" value="0.2586050724637681" />
         <entry key="app/src/main/res/layout/activity_login_back_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.1" />
@@ -42,6 +39,7 @@
         <entry key="app/src/main/res/layout/cart_list_item_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_desert_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_display_search_result.xml" value="0.26944444444444443" />
         <entry key="app/src/main/res/layout/fragment_drink_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_food_menu.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
@@ -51,9 +49,11 @@
         <entry key="app/src/main/res/layout/fragment_nguoidung.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_shipment_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_special_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_them.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_user.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/oder_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/product_list_item_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/product_list_item_view_vertical.xml" value="0.335" />
         <entry key="app/src/main/res/layout/rss_item_view.xml" value="0.375" />

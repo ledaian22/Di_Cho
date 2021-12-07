@@ -6,12 +6,14 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,6 +36,7 @@ import Model.Products;
 public class FoodMenuFragment extends Fragment {
     private Toolbar toolbar;
     private DatabaseReference ProductsRef;
+    private SearchView searchView;
     RecyclerView rvTop, rvBottom;
 
     @Override
@@ -41,6 +44,30 @@ public class FoodMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
+        //Search Init
+        searchView = v.findViewById(R.id.sv_searchFood);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Bundle searchHolder = new Bundle();
+                searchHolder.putString("search-item",query);
+                DisplaySearchResult displaySearchResult = new DisplaySearchResult();
+                //Set bundle data to Fragment
+                displaySearchResult.setArguments(searchHolder);
+                //Transfer to Fragment
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.frament_container,displaySearchResult).addToBackStack(null)
+                        .commit();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("Search", "onQueryTextChange: " + newText);
+                return false;
+            }
+        });
+
         //Firebase Init
         ProductsRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Products");
 
@@ -89,6 +116,23 @@ public class FoodMenuFragment extends Fragment {
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                         holder.tvProductName.setText(model.getPname());
                         Picasso.get().load(model.getImage()).into(holder.imgProduct);
+                        //Set OnClick Item
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //Passing data to Fragment using Bundle
+                                Bundle dataHolder = new Bundle();
+                                dataHolder.putString("pid",model.getPid());
+                                ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                                //Set bundle data to Fragment
+                                productDetailFragment.setArguments(dataHolder);
+                                //Transfer to Fragment
+                                FragmentManager fm = getFragmentManager();
+                                fm.beginTransaction().replace(R.id.frament_container,productDetailFragment).addToBackStack(null)
+                                        .commit();
+
+                            }
+                        });
                     }
 
                     @NonNull

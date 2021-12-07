@@ -21,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import Model.Cart;
 
@@ -40,7 +44,8 @@ import Model.Cart;
 public class CartFragment extends Fragment {
  private Toolbar toolbar;
  private RecyclerView recyclerView;
- private TextView cartFee, totalFee;
+ private TextView cartFee, totalFee, txtMsg;
+ private Button btnBuy;
  private static int overTotalPrice = 0;
  private static int shipFee =0 ;
 
@@ -49,10 +54,14 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+        CheckOderStatus();
         //Init UI
         recyclerView = v.findViewById(R.id.rv_cart_detail);
         cartFee = v.findViewById(R.id.tv_cart_fee);
         totalFee = v.findViewById(R.id.tv_total_cart_fee);
+        btnBuy = v.findViewById(R.id.btn_confirm_buy);
+        txtMsg = v.findViewById(R.id.tv_cart_msg);
+
 
         //Firebase Init
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -68,6 +77,7 @@ public class CartFragment extends Fragment {
                 holder.tvProductName.setText(model.getPname());
                 holder.tvProductPrice.setText(model.getPrice());
                 holder.tvProductQuantity.setText("x"+model.getQuantity());
+
                 //Calculate Price [Total = overTotalPrice + oneTypeProductPrice]
                 int oneProductPrice = Integer.parseInt(model.getPrice());
                 int oneProductQuantity = Integer.parseInt(model.getQuantity());
@@ -142,6 +152,20 @@ public class CartFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Đơn hàng");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
+
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle totalFeeHolder = new Bundle();
+                totalFeeHolder.putString("total", String.valueOf(overTotalPrice));
+                ShipmentDetailFragment shipmentDetailFragment = new ShipmentDetailFragment();
+                shipmentDetailFragment.setArguments(totalFeeHolder);
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.frament_container,shipmentDetailFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
+
         return v;
     }
 
@@ -173,5 +197,42 @@ public class CartFragment extends Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void CheckOderStatus(){
+        DatabaseReference oderRef;
+                oderRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                        .getReference().child("Oders").child(Prevalent.currentonlineUser.getPhone());
+
+                oderRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            String shippingStatus = snapshot.child("status").getValue().toString();
+                            String userName = snapshot.child("name").getValue().toString();
+                            if (shippingStatus.equals("Shipped")){
+
+                                totalFee.setText("Oder is shipped");
+                                recyclerView.setVisibility(View.GONE);
+                                txtMsg.setVisibility(View.VISIBLE);
+                                txtMsg.setText("You order is shipping");
+                                btnBuy.setVisibility(View.GONE);
+                                Toast.makeText(getContext(),"You can make another oder, once shipped",Toast.LENGTH_SHORT).show();
+                            } else if (shippingStatus.equals("Not Shipped")){
+                                totalFee.setText("Oder is not shipped");
+                                recyclerView.setVisibility(View.GONE);
+                                txtMsg.setVisibility(View.VISIBLE);
+                                btnBuy.setVisibility(View.GONE);
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 }

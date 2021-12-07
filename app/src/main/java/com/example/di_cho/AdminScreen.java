@@ -25,7 +25,7 @@ public class AdminScreen extends AppCompatActivity {
         btnCuaHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminScreen.this,AdminAddStore.class);
+                Intent intent = new Intent(AdminScreen.this, AdminControlPanel.class);
                 startActivity(intent);
             }
         });

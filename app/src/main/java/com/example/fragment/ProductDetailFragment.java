@@ -39,13 +39,14 @@ public class ProductDetailFragment extends Fragment {
     private  ImageView imgProduct;
     private TextView  productDesc, detailPrice,productName;
     private ElegantNumberButton numberButton;
-    private String productID ="";
+    private String productID ="", status="Normal";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_product_detail, container, false);
+        CheckOderStatus();
         //Init UI
         btnAddToCard = v.findViewById(R.id.btn_add_to_cart);
         detailPrice = v.findViewById(R.id.detail_price);
@@ -63,7 +64,12 @@ public class ProductDetailFragment extends Fragment {
         btnAddToCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addingtoCartLst();
+
+                if (status.equals("Oder Placed") || status.equals("Oder Shipped") ){
+                    Toast.makeText(getContext(),"You can purchase more, once your oder is ship or cofirm",Toast.LENGTH_LONG).show();
+                } else {
+                    addingtoCartLst();
+                }
             }
         });
 
@@ -134,6 +140,32 @@ public class ProductDetailFragment extends Fragment {
                     Picasso.get().load(products.getImage()).into(imgProduct);
 
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void CheckOderStatus(){
+        DatabaseReference oderRef;
+        oderRef = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference().child("Oders").child(Prevalent.currentonlineUser.getPhone());
+
+        oderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    String shippingStatus = snapshot.child("status").getValue().toString();
+                    if (shippingStatus.equals("Shipped")){
+                        status ="Oder shipped";
+                    } else if (shippingStatus.equals("Not Shipped")){
+                        status ="Oder Placed";
+                    }
+
+                }
+
             }
 
             @Override

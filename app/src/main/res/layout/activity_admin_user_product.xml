@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminCheckOderActivity">
+    tools:context=".AdminUserProduct">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Oders"
+        android:text="Products"
         android:textSize="30dp"
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_adminuser_title"
         android:gravity="center"/>
 
     <LinearLayout
-        android:layout_below="@+id/tv_title"
+        android:layout_below="@+id/tv_adminuser_title"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -27,7 +27,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rv_oder_list"/>
+            android:id="@+id/rv_check_oder_list"/>
     </LinearLayout>
-
 </RelativeLayout>

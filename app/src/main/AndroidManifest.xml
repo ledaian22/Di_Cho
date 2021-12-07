@@ -14,11 +14,14 @@
         android:theme="@style/Theme.Di_Cho"
         tools:replace="android:theme">
         <activity
+            android:name=".AdminUserProduct"
+            android:exported="false" />
+        <activity
             android:name=".AdminCheckOderActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterBackUp"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -35,13 +38,10 @@
             android:name=".InfoappScreen"
             android:exported="false" />
         <activity
-            android:name=".AdminAddStore"
+            android:name=".AdminControlPanel"
             android:exported="true" />
         <activity
             android:name=".AdminAddProduct"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotpassScreen"
             android:exported="true" />
         <activity
             android:name=".AdminScreen"
@@ -57,10 +57,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginBackUp"
-            android:exported="true"></activity>
-        <activity
-            android:name=".LoginScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

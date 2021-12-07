@@ -52,6 +52,15 @@
             android:id="@+id/rv_cart_detail"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_cart_msg"
+        android:layout_below="@id/cart_ll"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your oder is processing"
+        android:visibility="gone"/>
+
     <RelativeLayout
         android:id="@+id/total_cart_price"
         android:layout_marginLeft="20dp"
@@ -119,13 +128,14 @@
     </RelativeLayout>
 
     <Button
-        android:background="@drawable/rounded_shape"
-        android:layout_marginTop="30dp"
+        android:id="@+id/btn_confirm_buy"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_cart_total_fee"
         android:layout_centerHorizontal="true"
-        android:text="Thanh toán"/>
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_shape"
+        android:text="Thanh toán" />
 
 
 </RelativeLayout>

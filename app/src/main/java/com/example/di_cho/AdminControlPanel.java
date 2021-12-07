@@ -9,7 +9,7 @@ import android.widget.Button;
 
 //Sơn Tùng
 
-public class AdminAddStore extends AppCompatActivity {
+public class AdminControlPanel extends AppCompatActivity {
 Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminAddStore.this,LoginBackUp.class);
+                Intent intent = new Intent(AdminControlPanel.this,LoginBackUp.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -35,7 +35,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         checkOder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminAddStore.this,AdminCheckOderActivity.class);
+                Intent intent = new Intent(AdminControlPanel.this,AdminCheckOderActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -44,7 +44,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminAddStore.this, AdminAddProduct.class);
+                Intent i = new Intent(AdminControlPanel.this, AdminAddProduct.class);
                 i.putExtra("Category","Food");
                 startActivity(i);
             }
@@ -53,7 +53,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         addDrink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminAddStore.this, AdminAddProduct.class);
+                Intent i = new Intent(AdminControlPanel.this, AdminAddProduct.class);
                 i.putExtra("Category","Drink");
                 startActivity(i);
             }
@@ -62,7 +62,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         addDesert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminAddStore.this, AdminAddProduct.class);
+                Intent i = new Intent(AdminControlPanel.this, AdminAddProduct.class);
                 i.putExtra("Category","Desert");
                 startActivity(i);
             }
@@ -71,7 +71,7 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         addSpecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminAddStore.this, AdminAddProduct.class);
+                Intent i = new Intent(AdminControlPanel.this, AdminAddProduct.class);
                 i.putExtra("Category","Special");
                 startActivity(i);
             }
