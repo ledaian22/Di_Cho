@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Di_Cho"
         tools:replace="android:theme">
         <activity
+            android:name=".AdminEditProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminUserProduct"
             android:exported="false" />
         <activity

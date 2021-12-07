@@ -10,7 +10,7 @@ import android.widget.Button;
 //Sơn Tùng
 
 public class AdminControlPanel extends AppCompatActivity {
-Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
+Button addFood, addDrink, addDesert, addSpecial, logout,checkOder, editProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,17 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder;
         addSpecial = findViewById(R.id.btnAddDacBiet);
         logout = findViewById(R.id.btnAdminLogout);
         checkOder = findViewById(R.id.btnCheckOder);
+        editProduct = findViewById(R.id.btn_edit_product);
+
+        editProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminControlPanel.this,MainActivity.class);
+                intent.putExtra("Permission","Admin");
+                startActivity(intent);
+
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,8 @@ public class DrinkMenuFragment extends Fragment {
     private Toolbar toolbar;
     private DatabaseReference ProductsRef;
     RecyclerView rv_hot_item_drink,rv_hotBelowItemDrink;
+    private String permission ="";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +42,10 @@ public class DrinkMenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_drink_menu, container, false);
 
+        //Get permission
+        permission=this.getArguments().getString("permission");
+//        Log.d("permission", permission);
+        //Toolbar Init
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Đồ uống");
@@ -141,11 +148,23 @@ public class DrinkMenuFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                fm.beginTransaction().replace(R.id.frament_container,new HomeFragment()).addToBackStack(null)
+                Bundle bundle = new Bundle();
+                bundle.putString("quyen",permission);
+                Log.d("Bundle value", ""+bundle);
+                HomeFragment homeFragment = new HomeFragment();
+                homeFragment.setArguments(bundle);
+                fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
             case R.id.app_bar_cart:
-                fm.beginTransaction().replace(R.id.frament_container,new CartFragment()).addToBackStack(null)
+                Bundle cartBundle = new Bundle();
+                cartBundle.putString("permission",permission);
+                Log.d("Permission", "" +cartBundle);
+                //Create Fragment Object
+                CartFragment cartFragment = new CartFragment();
+                //Set bundle data to Fragment
+                cartFragment.setArguments(cartBundle);
+                fm.beginTransaction().replace(R.id.frament_container,cartFragment).addToBackStack(null)
                         .commit();
                 break;
         }

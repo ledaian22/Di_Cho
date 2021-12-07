@@ -48,12 +48,17 @@ public class CartFragment extends Fragment {
  private Button btnBuy;
  private static int overTotalPrice = 0;
  private static int shipFee =0 ;
+ String permission="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+        //Get permission
+        permission=this.getArguments().getString("permission");
+        Log.d("permission", permission);
+        //Search Init`223
         CheckOderStatus();
         //Init UI
         recyclerView = v.findViewById(R.id.rv_cart_detail);
@@ -188,7 +193,12 @@ public class CartFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                fm.beginTransaction().replace(R.id.frament_container,new HomeFragment()).addToBackStack(null)
+                Bundle bundle = new Bundle();
+                bundle.putString("quyen",permission);
+                Log.d("Bundle value", ""+bundle);
+                HomeFragment homeFragment = new HomeFragment();
+                homeFragment.setArguments(bundle);
+                fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
             case R.id.app_bar_cart:

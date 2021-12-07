@@ -33,6 +33,8 @@ public class DisplaySearchResult extends Fragment {
     RecyclerView recyclerView;
     private Toolbar toolbar;
     private String searchQuery ="";
+    private String permission="";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class DisplaySearchResult extends Fragment {
         View v = inflater.inflate(R.layout.fragment_display_search_result, container, false);
         recyclerView = v.findViewById(R.id.rv_searchdisplay);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //Get permission
+        permission=this.getArguments().getString("permission");
         //Bundle
         Bundle searchHolder = this.getArguments();
         searchQuery = searchHolder.getString("search-item");
@@ -103,7 +107,12 @@ public class DisplaySearchResult extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                fm.beginTransaction().replace(R.id.frament_container,new HomeFragment()).addToBackStack(null)
+                Bundle bundle = new Bundle();
+                bundle.putString("quyen",permission);
+                Log.d("Bundle value", ""+bundle);
+                HomeFragment homeFragment = new HomeFragment();
+                homeFragment.setArguments(bundle);
+                fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
             case R.id.app_bar_cart:

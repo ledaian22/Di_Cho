@@ -1,5 +1,6 @@
 package com.example.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ViewHolder.ProductViewHolder;
+import com.example.di_cho.AdminEditProductActivity;
 import com.example.di_cho.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -38,12 +40,17 @@ public class FoodMenuFragment extends Fragment {
     private DatabaseReference ProductsRef;
     private SearchView searchView;
     RecyclerView rvTop, rvBottom;
+    private String permission ="";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
+        //Get permission
+        permission=this.getArguments().getString("permission");
+//        Log.d("permission", permission);
         //Search Init
         searchView = v.findViewById(R.id.sv_searchFood);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -86,6 +93,12 @@ public class FoodMenuFragment extends Fragment {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                //Check if admin
+                            if (permission.equals("Admin")){
+                            Intent intent = new Intent(getContext(), AdminEditProductActivity.class)    ;
+                            startActivity(intent);
+
+                            } else {
                                 //Passing data to Fragment using Bundle
                                 Bundle dataHolder = new Bundle();
                                 dataHolder.putString("pid",model.getPid());
@@ -96,6 +109,7 @@ public class FoodMenuFragment extends Fragment {
                                 FragmentManager fm = getFragmentManager();
                                 fm.beginTransaction().replace(R.id.frament_container,productDetailFragment).addToBackStack(null)
                                         .commit();
+                            }
 
                             }
                         });
@@ -182,11 +196,23 @@ public class FoodMenuFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                fm.beginTransaction().replace(R.id.frament_container,new HomeFragment()).addToBackStack(null)
+                Bundle bundle = new Bundle();
+                bundle.putString("quyen",permission);
+                Log.d("Bundle value", ""+bundle);
+                HomeFragment homeFragment = new HomeFragment();
+                homeFragment.setArguments(bundle);
+                fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
             case R.id.app_bar_cart:
-                fm.beginTransaction().replace(R.id.frament_container,new CartFragment()).addToBackStack(null)
+                Bundle cartBundle = new Bundle();
+                cartBundle.putString("permission",permission);
+                Log.d("Permission", "" +cartBundle);
+                //Create Fragment Object
+                CartFragment cartFragment = new CartFragment();
+                //Set bundle data to Fragment
+                cartFragment.setArguments(cartBundle);
+                fm.beginTransaction().replace(R.id.frament_container,cartFragment).addToBackStack(null)
                         .commit();
                 break;
         }
