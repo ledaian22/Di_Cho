@@ -43,7 +43,6 @@ public class DrinkMenuFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_drink_menu, container, false);
 
         //Get permission
-        permission=this.getArguments().getString("permission");
 //        Log.d("permission", permission);
         //Toolbar Init
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);

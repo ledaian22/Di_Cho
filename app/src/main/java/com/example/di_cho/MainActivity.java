@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     Bundle bundle = new Bundle();
                     bundle.putString("permission",type);
-                    Log.d("Permission", "" +bundle);
                     HomeFragment homeFragment = new HomeFragment();
                     homeFragment.setArguments(bundle);
                     selectedFragment = homeFragment;

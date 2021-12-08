@@ -42,7 +42,6 @@ public class SpecialMenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_special_menu, container, false);
         //Get permission
-        permission=this.getArguments().getString("permission");
 
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -147,7 +146,7 @@ public class SpecialMenuFragment extends Fragment {
             case android.R.id.home:
                 Bundle bundle = new Bundle();
                 bundle.putString("quyen",permission);
-                Log.d("Bundle value", ""+bundle);
+
                 HomeFragment homeFragment = new HomeFragment();
                 homeFragment.setArguments(bundle);
                 fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
@@ -156,7 +155,7 @@ public class SpecialMenuFragment extends Fragment {
             case R.id.app_bar_cart:
                 Bundle cartBundle = new Bundle();
                 cartBundle.putString("permission",permission);
-                Log.d("Permission", "" +cartBundle);
+
                 //Create Fragment Object
                 CartFragment cartFragment = new CartFragment();
                 //Set bundle data to Fragment

@@ -49,7 +49,6 @@ public class FoodMenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
         //Get permission
-        permission=this.getArguments().getString("permission");
 //        Log.d("permission", permission);
         //Search Init
         searchView = v.findViewById(R.id.sv_searchFood);
@@ -94,11 +93,7 @@ public class FoodMenuFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 //Check if admin
-                            if (permission.equals("Admin")){
-                            Intent intent = new Intent(getContext(), AdminEditProductActivity.class)    ;
-                            startActivity(intent);
 
-                            } else {
                                 //Passing data to Fragment using Bundle
                                 Bundle dataHolder = new Bundle();
                                 dataHolder.putString("pid",model.getPid());
@@ -111,7 +106,7 @@ public class FoodMenuFragment extends Fragment {
                                         .commit();
                             }
 
-                            }
+
                         });
                     }
 

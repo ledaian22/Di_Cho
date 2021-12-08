@@ -35,7 +35,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         //Get Permission
-        permission = this.getArguments().getString("quyen");
         //Init UI
         menuFood = v.findViewById(R.id.menu_doan);
         menuDrink = v.findViewById(R.id.menu_douong);
@@ -49,7 +48,6 @@ public class HomeFragment extends Fragment {
                 //Passing Permission
                 Bundle bundle = new Bundle();
                 bundle.putString("permission",permission);
-                Log.d("Permission", "" +bundle);
                 //Create Fragment object
                 FoodMenuFragment foodMenuFragment = new FoodMenuFragment();
                 //Set bundle data to Fragment
@@ -66,7 +64,6 @@ public class HomeFragment extends Fragment {
                 //Passing Permission
                 Bundle bundle = new Bundle();
                 bundle.putString("permission",permission);
-                Log.d("Permission", "" +bundle);
                 //Create Fragment Object
                 DrinkMenuFragment drinkMenuFragment = new DrinkMenuFragment();
                 //Set bundle data to Fragment
@@ -84,7 +81,6 @@ public class HomeFragment extends Fragment {
                 //Passing Permission
                 Bundle bundle = new Bundle();
                 bundle.putString("permission",permission);
-                Log.d("Permission", "" +bundle);
                 //Create Fragment Object
                 DesertMenuFragment desertMenuFragment = new DesertMenuFragment();
                 //Set bundle data to Fragment
@@ -102,7 +98,6 @@ public class HomeFragment extends Fragment {
                 //Passing Permission
                 Bundle bundle = new Bundle();
                 bundle.putString("permission",permission);
-                Log.d("Permission", "" +bundle);
                 //Create Fragment Object
                 SpecialMenuFragment specialMenuFragment = new SpecialMenuFragment();
                 //Set bundle data to Fragment
@@ -131,7 +126,6 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Bundle bundle = new Bundle();
         bundle.putString("permission",permission);
-        Log.d("Permission", "" +bundle);
         //Create Fragment Object
         CartFragment cartFragment = new CartFragment();
         //Set bundle data to Fragment

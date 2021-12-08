@@ -43,7 +43,7 @@ public class DisplaySearchResult extends Fragment {
         recyclerView = v.findViewById(R.id.rv_searchdisplay);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         //Get permission
-        permission=this.getArguments().getString("permission");
+
         //Bundle
         Bundle searchHolder = this.getArguments();
         searchQuery = searchHolder.getString("search-item");
@@ -109,7 +109,6 @@ public class DisplaySearchResult extends Fragment {
             case android.R.id.home:
                 Bundle bundle = new Bundle();
                 bundle.putString("quyen",permission);
-                Log.d("Bundle value", ""+bundle);
                 HomeFragment homeFragment = new HomeFragment();
                 homeFragment.setArguments(bundle);
                 fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)

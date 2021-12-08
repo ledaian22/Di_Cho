@@ -55,10 +55,7 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-        //Get permission
-        permission=this.getArguments().getString("permission");
-        Log.d("permission", permission);
-        //Search Init`223
+        //Search Init
         CheckOderStatus();
         //Init UI
         recyclerView = v.findViewById(R.id.rv_cart_detail);
@@ -195,7 +192,6 @@ public class CartFragment extends Fragment {
             case android.R.id.home:
                 Bundle bundle = new Bundle();
                 bundle.putString("quyen",permission);
-                Log.d("Bundle value", ""+bundle);
                 HomeFragment homeFragment = new HomeFragment();
                 homeFragment.setArguments(bundle);
                 fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
