@@ -18,16 +18,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.di_cho.MainActivity;
 import com.example.di_cho.R;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.github.kimkevin.cachepot.CachePot;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 
 //Sơn Tùng
 
 public class HomeFragment extends Fragment {
     private Toolbar toolbar;
     private CardView menuFood, menuDrink, menuDesert, menuSpecial;
-    private String permission="";
-
+    private String fragPermission;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,19 +41,24 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         //Get Permission
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
         //Init UI
         menuFood = v.findViewById(R.id.menu_doan);
         menuDrink = v.findViewById(R.id.menu_douong);
         menuDesert = v.findViewById(R.id.menu_trangmieng);
         menuSpecial = v.findViewById(R.id.menu_khuyenmai);
         //OnClick CardView
+
         //Food Menu
         menuFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Passing Permission
                 Bundle bundle = new Bundle();
-                bundle.putString("permission",permission);
+//                bundle.putString("permission",permission);
                 //Create Fragment object
                 FoodMenuFragment foodMenuFragment = new FoodMenuFragment();
                 //Set bundle data to Fragment
@@ -63,7 +74,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //Passing Permission
                 Bundle bundle = new Bundle();
-                bundle.putString("permission",permission);
+//                bundle.putString("permission",permission);
                 //Create Fragment Object
                 DrinkMenuFragment drinkMenuFragment = new DrinkMenuFragment();
                 //Set bundle data to Fragment
@@ -80,7 +91,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //Passing Permission
                 Bundle bundle = new Bundle();
-                bundle.putString("permission",permission);
+//                bundle.putString("permission",permission);
                 //Create Fragment Object
                 DesertMenuFragment desertMenuFragment = new DesertMenuFragment();
                 //Set bundle data to Fragment
@@ -97,7 +108,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //Passing Permission
                 Bundle bundle = new Bundle();
-                bundle.putString("permission",permission);
+//                bundle.putString("permission",permission);
                 //Create Fragment Object
                 SpecialMenuFragment specialMenuFragment = new SpecialMenuFragment();
                 //Set bundle data to Fragment
@@ -125,7 +136,7 @@ public class HomeFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Bundle bundle = new Bundle();
-        bundle.putString("permission",permission);
+//        bundle.putString("permission",permission);
         //Create Fragment Object
         CartFragment cartFragment = new CartFragment();
         //Set bundle data to Fragment
@@ -136,5 +147,20 @@ public class HomeFragment extends Fragment {
         return super.onOptionsItemSelected(item);
 
     }
+
+    //Register Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
+    }
+
 
 }

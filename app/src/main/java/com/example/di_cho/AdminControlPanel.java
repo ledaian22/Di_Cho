@@ -4,16 +4,45 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.github.kimkevin.cachepot.CachePot;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 
 //Sơn Tùng
 
 public class AdminControlPanel extends AppCompatActivity {
 Button addFood, addDrink, addDesert, addSpecial, logout,checkOder, editProduct;
+private String permission ="Admin";
+    //Register Event Bus
+    @Override
+    public void onStart() {
+        EventBus.getDefault().register(this);
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+    @Subscribe (threadMode = ThreadMode.MAIN)
+    public void sendPermission(Message event){
+        permission.equals(event.getMessage());
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().postSticky(new Message("Admin"));
+        CachePot.getInstance().push(permission);
+        Log.d("Permission", permission);
         setContentView(R.layout.activity_admin_add_store);
         addFood = findViewById(R.id.btnAddDoAn);
         addDrink = findViewById(R.id.btnAddDoUong);
@@ -26,9 +55,9 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder, editProduct;
         editProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminControlPanel.this,MainActivity.class);
-                intent.putExtra("Permission","Admin");
-                startActivity(intent);
+                Intent i = new Intent(AdminControlPanel.this,MainActivity.class);
+                i.putExtra("Permission","Admin");
+                startActivity(i);
 
             }
         });
@@ -88,4 +117,6 @@ Button addFood, addDrink, addDesert, addSpecial, logout,checkOder, editProduct;
             }
         });
     }
+
+
 }

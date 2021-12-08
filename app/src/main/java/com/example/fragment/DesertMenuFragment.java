@@ -25,6 +25,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 import Model.Products;
 
 //Sơn Tùng
@@ -33,7 +38,8 @@ public class DesertMenuFragment extends Fragment {
     private Toolbar toolbar;
     private DatabaseReference ProductsRef;
     RecyclerView rv_hot_item_desert,rv_hotBelowItemDesert;
-    private String permission ="";
+    private String fragPermission;
+
 
 
 
@@ -42,7 +48,14 @@ public class DesertMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_desert_menu, container, false);
-        //Get permission
+
+        //Get Permission Event Bus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
+
+        //Toolbar Init
         toolbar = (Toolbar) v.findViewById(R.id.main_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Tráng miệng");
@@ -145,24 +158,30 @@ public class DesertMenuFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                Bundle bundle = new Bundle();
-                bundle.putString("quyen",permission);
                 HomeFragment homeFragment = new HomeFragment();
-                homeFragment.setArguments(bundle);
                 fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
             case R.id.app_bar_cart:
-                Bundle cartBundle = new Bundle();
-                cartBundle.putString("permission",permission);
-                //Create Fragment Object
                 CartFragment cartFragment = new CartFragment();
-                //Set bundle data to Fragment
-                cartFragment.setArguments(cartBundle);
                 fm.beginTransaction().replace(R.id.frament_container,cartFragment).addToBackStack(null)
                         .commit();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+    //Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
+    }
+
 }

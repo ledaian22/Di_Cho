@@ -23,21 +23,36 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+
+import Model.Message;
 
 public class ShipmentDetailFragment extends Fragment {
     EditText edName, edPhone, edAddress, edCity;
     CheckBox chkConfirm;
     Button btnConfirm;
     String totalAmount ="";
+    private String fragPermission;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_shipment_detail, container, false);
+
+        //Get Permission Event Bus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
+
         //Get Data from Bundle
         Bundle totalFeeHolder = this.getArguments();
         totalAmount = totalFeeHolder.getString("total");
@@ -127,5 +142,18 @@ public class ShipmentDetailFragment extends Fragment {
             }
         });
 
+    }
+    //Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
     }
 }

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.Prevalent.Prevalent;
+
+import Model.Message;
 import Model.Users;
 import com.example.di_cho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,6 +47,8 @@ public class ProductDetailFragment extends Fragment {
     private TextView  productDesc, detailPrice,productName;
     private ElegantNumberButton numberButton;
     private String productID ="", status="Normal";
+    private String fragPermission;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +56,12 @@ public class ProductDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_product_detail, container, false);
         CheckOderStatus();
+        //Get Permission Event Bus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
+
         //Init UI
         btnAddToCard = v.findViewById(R.id.btn_add_to_cart);
         detailPrice = v.findViewById(R.id.detail_price);
@@ -173,5 +188,18 @@ public class ProductDetailFragment extends Fragment {
 
             }
         });
+    }
+    //Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
     }
 }

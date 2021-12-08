@@ -12,28 +12,32 @@ import android.view.MenuItem;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.MenuFragment;
 import com.example.fragment.MoreFragment;
-import com.example.fragment.ProductDetailFragment;
 import com.example.fragment.UserFragment;
+import com.github.kimkevin.cachepot.CachePot;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 
 //Sơn Tùng
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
-    private String type = "";
+    private  String type="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Event Bus
+
         //Check
-        type = getIntent().getExtras().get("Permission").toString();
-        Log.d("Permission", type);
+        type = getIntent().getExtras().getString("Permission");
+        Log.d("Activity Permission", ""+type);
         //Bundle
-        Bundle bundle = new Bundle();
-        bundle.putString("quyen",type);
-        Log.d("Bundle value", ""+bundle);
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.setArguments(bundle);
         //anh xa
         //Toolbar Init
         toolbar = findViewById(R.id.main_toolbar);
@@ -44,21 +48,19 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frament_container,
-                homeFragment).commit();
+                new HomeFragment()).commit();
     }
+
+
     //Xu ly bam chon fragment
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
-            Log.d("Permission Again", type);
             switch (item.getItemId()){
                 case R.id.nav_home:
-                    Bundle bundle = new Bundle();
-                    bundle.putString("permission",type);
                     HomeFragment homeFragment = new HomeFragment();
-                    homeFragment.setArguments(bundle);
                     selectedFragment = homeFragment;
                     break;
                 case R.id.nav_menu:
@@ -86,5 +88,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Register Event Bus
+
+    @Override
+    public void onStart() {
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+    @Subscribe (threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermissionEvent(Message event){
+        type= String.valueOf(event.getMessage())   ;
+        Log.d("Type", type);
+    }
 
 }

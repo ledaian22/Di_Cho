@@ -30,7 +30,10 @@ android {
 }
 
 dependencies {
-
+    //Cache Object
+    implementation 'com.github.kimkevin:cachepot:1.2.0'
+    implementation("org.greenrobot:eventbus:3.3.0")
+    //Default
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
@@ -54,4 +57,5 @@ dependencies {
     implementation 'io.github.pilgr:paperdb:2.7.1'
     //Increase & Decrease Quantity
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
+
 }

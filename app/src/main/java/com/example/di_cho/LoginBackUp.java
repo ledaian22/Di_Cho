@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,6 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 import Model.Users;
 import io.paperdb.Paper;
 
@@ -31,6 +37,7 @@ public class LoginBackUp extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private String parentDbName = "Users";
     private CheckBox chk_Remember;
+    private String type="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,6 +141,7 @@ public class LoginBackUp extends AppCompatActivity {
                                 Toast.makeText(LoginBackUp.this,"Welcome",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent i  = new Intent(LoginBackUp.this, MainActivity.class);
+                                EventBus.getDefault().postSticky(new Message("User"));
                                 i.putExtra("Permission","User");
                                 Prevalent.currentonlineUser = usersData;
                                 startActivity(i);
@@ -159,5 +167,24 @@ public class LoginBackUp extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermissionEvent(Message event){
+        type= String.valueOf(event.getMessage())   ;
+        Log.d("Type", type);
     }
 }

@@ -26,6 +26,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 import Model.Products;
 
 
@@ -33,7 +38,8 @@ public class DisplaySearchResult extends Fragment {
     RecyclerView recyclerView;
     private Toolbar toolbar;
     private String searchQuery ="";
-    private String permission="";
+    private String fragPermission;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +48,12 @@ public class DisplaySearchResult extends Fragment {
         View v = inflater.inflate(R.layout.fragment_display_search_result, container, false);
         recyclerView = v.findViewById(R.id.rv_searchdisplay);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //Get permission
 
+        //Get Permission Event Bus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
         //Bundle
         Bundle searchHolder = this.getArguments();
         searchQuery = searchHolder.getString("search-item");
@@ -107,10 +117,7 @@ public class DisplaySearchResult extends Fragment {
         FragmentManager fm = getFragmentManager();
         switch (item.getItemId()){
             case android.R.id.home:
-                Bundle bundle = new Bundle();
-                bundle.putString("quyen",permission);
                 HomeFragment homeFragment = new HomeFragment();
-                homeFragment.setArguments(bundle);
                 fm.beginTransaction().replace(R.id.frament_container,homeFragment).addToBackStack(null)
                         .commit();
                 break;
@@ -121,4 +128,18 @@ public class DisplaySearchResult extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+    //Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
+    }
+
 }

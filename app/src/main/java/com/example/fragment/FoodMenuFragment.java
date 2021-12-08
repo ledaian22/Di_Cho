@@ -22,15 +22,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.Interface.FragmentCommunicator;
 import com.example.ViewHolder.ProductViewHolder;
 import com.example.di_cho.AdminEditProductActivity;
+import com.example.di_cho.MainActivity;
 import com.example.di_cho.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.github.kimkevin.cachepot.CachePot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import Model.Message;
 import Model.Products;
 
 //Sơn Tùng
@@ -40,7 +48,8 @@ public class FoodMenuFragment extends Fragment {
     private DatabaseReference ProductsRef;
     private SearchView searchView;
     RecyclerView rvTop, rvBottom;
-    private String permission ="";
+    private String fragPermission;
+
 
 
     @Override
@@ -48,8 +57,13 @@ public class FoodMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
-        //Get permission
-//        Log.d("permission", permission);
+
+        //Get Permission Event Bus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+        Log.d("Fragment Permission", "" + fragPermission);
+
         //Search Init
         searchView = v.findViewById(R.id.sv_searchFood);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -93,19 +107,25 @@ public class FoodMenuFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 //Check if admin
-
-                                //Passing data to Fragment using Bundle
-                                Bundle dataHolder = new Bundle();
-                                dataHolder.putString("pid",model.getPid());
-                                ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-                                //Set bundle data to Fragment
-                                productDetailFragment.setArguments(dataHolder);
-                                //Transfer to Fragment
-                                FragmentManager fm = getFragmentManager();
-                                fm.beginTransaction().replace(R.id.frament_container,productDetailFragment).addToBackStack(null)
-                                        .commit();
+                                if (fragPermission.equals("Admin")) {
+                                    Intent i = new Intent(getActivity(),AdminEditProductActivity.class);
+                                    Bundle pidHolder = new Bundle();
+                                    pidHolder.putString("pid", model.getPid());
+                                    i.putExtra("pid",model.getPid());
+                                    startActivity(i);
+                                } else {
+                                    //Passing data to Fragment using Bundle
+                                    Bundle dataHolder = new Bundle();
+                                    dataHolder.putString("pid", model.getPid());
+                                    ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                                    //Set bundle data to Fragment
+                                    productDetailFragment.setArguments(dataHolder);
+                                    //Transfer to Fragment
+                                    FragmentManager fm = getFragmentManager();
+                                    fm.beginTransaction().replace(R.id.frament_container, productDetailFragment).addToBackStack(null)
+                                            .commit();
+                                }
                             }
-
 
                         });
                     }
@@ -192,7 +212,7 @@ public class FoodMenuFragment extends Fragment {
         switch (item.getItemId()){
             case android.R.id.home:
                 Bundle bundle = new Bundle();
-                bundle.putString("quyen",permission);
+
                 Log.d("Bundle value", ""+bundle);
                 HomeFragment homeFragment = new HomeFragment();
                 homeFragment.setArguments(bundle);
@@ -201,7 +221,7 @@ public class FoodMenuFragment extends Fragment {
                 break;
             case R.id.app_bar_cart:
                 Bundle cartBundle = new Bundle();
-                cartBundle.putString("permission",permission);
+
                 Log.d("Permission", "" +cartBundle);
                 //Create Fragment Object
                 CartFragment cartFragment = new CartFragment();
@@ -213,4 +233,19 @@ public class FoodMenuFragment extends Fragment {
         }
       return super.onOptionsItemSelected(item);
     }
+
+    //Event Bus
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPermission(Message event){
+        fragPermission = String.valueOf(event.getMessage());
+    }
+
 }
