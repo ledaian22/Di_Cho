@@ -65,6 +65,21 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btn_delete_change"
+            android:padding="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_apply_change"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_input_bg"
+            android:text="Delete"
+            android:textSize="15dp"
+            />
+
+        <Button
             android:id="@+id/btn_apply_change"
             android:padding="10dp"
             android:layout_marginLeft="30dp"

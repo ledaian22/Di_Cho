@@ -1,4 +1,4 @@
-package com.example.di_cho;
+package com.example.di_cho.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.di_cho.LoginBackUp;
+import com.example.di_cho.MainActivity;
+import com.example.di_cho.R;
 import com.github.kimkevin.cachepot.CachePot;
 
 import org.greenrobot.eventbus.EventBus;
@@ -55,7 +58,7 @@ private String permission ="Admin";
         editProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminControlPanel.this,MainActivity.class);
+                Intent i = new Intent(AdminControlPanel.this, MainActivity.class);
                 i.putExtra("Permission","Admin");
                 startActivity(i);
 
@@ -65,7 +68,7 @@ private String permission ="Admin";
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminControlPanel.this,LoginBackUp.class);
+                Intent intent = new Intent(AdminControlPanel.this, LoginBackUp.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

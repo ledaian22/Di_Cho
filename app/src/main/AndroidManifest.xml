@@ -14,13 +14,22 @@
         android:theme="@style/Theme.Di_Cho"
         tools:replace="android:theme">
         <activity
-            android:name=".AdminEditProductActivity"
+            android:name=".Seller.SellerHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminUserProduct"
+            android:name=".Seller.SellerLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminCheckOderActivity"
+            android:name=".Seller.SellerRegActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminEditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminUserProduct"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminCheckOderActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterBackUp"
@@ -41,13 +50,10 @@
             android:name=".InfoappScreen"
             android:exported="false" />
         <activity
-            android:name=".AdminControlPanel"
+            android:name=".Admin.AdminControlPanel"
             android:exported="false" />
         <activity
-            android:name=".AdminAddProduct"
-            android:exported="false" />
-        <activity
-            android:name=".AdminScreen"
+            android:name=".Admin.AdminAddProduct"
             android:exported="false" />
         <activity
             android:name=".IntroSlide2"

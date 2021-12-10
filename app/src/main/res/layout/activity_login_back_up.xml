@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen">
+    tools:context=".LoginBackUp">
 
     <ImageView
         android:id="@+id/background1"
@@ -150,8 +150,20 @@
         android:text="Not Admin?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rau"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_isAdminTruee" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_isAdminTruee"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/tv_become_seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Seller?"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/chk_remember"
+        app:layout_constraintStart_toEndOf="@+id/chk_remember" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Prevalent.Prevalent;
+import com.example.di_cho.Admin.AdminControlPanel;
+import com.example.di_cho.Seller.SellerHomeActivity;
+import com.example.di_cho.Seller.SellerRegActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +38,7 @@ import io.paperdb.Paper;
 public class LoginBackUp extends AppCompatActivity {
     private EditText edPhoneNumber, edPassword;
     private Button btnLogin, btnRegister;
-    private TextView isAdmin, isNotAdmin;
+    private TextView isAdmin, isNotAdmin, isSeller;
     private ProgressDialog loadingBar;
     private String parentDbName = "Users";
     private CheckBox chk_Remember;
@@ -45,6 +50,15 @@ public class LoginBackUp extends AppCompatActivity {
         InitUI();
         Paper.init(this);
         isNotAdmin.setVisibility(View.INVISIBLE);
+
+        isSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().postSticky(new Message("User"));
+                Intent i  = new Intent(LoginBackUp.this, SellerRegActivity.class);
+                startActivity(i);
+            }
+        });
 
         isAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +99,7 @@ public class LoginBackUp extends AppCompatActivity {
     }
 
     private void InitUI() {
+        isSeller = findViewById(R.id.tv_become_seller);
         edPhoneNumber = findViewById(R.id.ed_login_PhoneNumer);
         edPassword = findViewById(R.id.ed_login_Passwordd);
         btnRegister = findViewById(R.id.btnBackUpRegister);
@@ -174,6 +189,13 @@ public class LoginBackUp extends AppCompatActivity {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if (firebaseUser !=null){
+//            Intent intent = new Intent(LoginBackUp.this, SellerHomeActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK );
+//            startActivity(intent);
+//            finish();
+//        }
         super.onStart();
     }
 

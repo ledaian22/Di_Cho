@@ -3,9 +3,7 @@ package com.example.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -22,14 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.Interface.FragmentCommunicator;
 import com.example.ViewHolder.ProductViewHolder;
-import com.example.di_cho.AdminEditProductActivity;
-import com.example.di_cho.MainActivity;
+import com.example.di_cho.Admin.AdminEditProductActivity;
 import com.example.di_cho.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.github.kimkevin.cachepot.CachePot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;

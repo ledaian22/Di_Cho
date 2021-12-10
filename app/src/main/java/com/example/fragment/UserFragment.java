@@ -10,7 +10,6 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 //import com.example.di_cho.LoginScreen;
-import com.example.di_cho.AdminScreen;
 import com.example.di_cho.R;
 import com.example.di_cho.SplashScreen;
 import com.google.firebase.auth.FirebaseAuth;

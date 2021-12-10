@@ -1,4 +1,4 @@
-package com.example.di_cho;
+package com.example.di_cho.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.di_cho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -23,11 +24,12 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 
 public class AdminEditProductActivity extends AppCompatActivity {
-    private String productID ="";
+    private String productID = "";
     private EditText edName, edPrice, edDesc;
     private ImageView imgProduct;
-    private Button btnApply;
+    private Button btnApply, btnDelete;
     private DatabaseReference productsRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,24 @@ public class AdminEditProductActivity extends AppCompatActivity {
                 applyChanges();
             }
 
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteThisProduct();
+            }
+        });
+    }
 
+    private void deleteThisProduct() {
+        productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(AdminEditProductActivity.this, "Product delete successful", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(AdminEditProductActivity.this, AdminControlPanel.class);
+                startActivity(i);
+                finish();
+            }
         });
     }
 
@@ -55,26 +74,26 @@ public class AdminEditProductActivity extends AppCompatActivity {
         String pPrice = edPrice.getText().toString();
         String pDesc = edDesc.getText().toString();
 
-        if (pName.equals("")){
-            Toast.makeText(this,"Write Name",Toast.LENGTH_SHORT).show();
-        } else if (pPrice.equals("")){
-            Toast.makeText(this,"Write Price",Toast.LENGTH_SHORT).show();
-        } else if (pDesc.equals("")){
-            Toast.makeText(this,"Write Description",Toast.LENGTH_SHORT).show();
+        if (pName.equals("")) {
+            Toast.makeText(this, "Write Name", Toast.LENGTH_SHORT).show();
+        } else if (pPrice.equals("")) {
+            Toast.makeText(this, "Write Price", Toast.LENGTH_SHORT).show();
+        } else if (pDesc.equals("")) {
+            Toast.makeText(this, "Write Description", Toast.LENGTH_SHORT).show();
         } else {
 
             HashMap<String, Object> productMap = new HashMap<>();
-            productMap.put("pid",productID);
-            productMap.put("desc",pDesc);
-            productMap.put("price",pPrice);
-            productMap.put("pname",pName);
+            productMap.put("pid", productID);
+            productMap.put("desc", pDesc);
+            productMap.put("price", pPrice);
+            productMap.put("pname", pName);
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(AdminEditProductActivity.this,"Change successful",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(AdminEditProductActivity.this,AdminControlPanel.class);
+                    if (task.isSuccessful()) {
+                        Toast.makeText(AdminEditProductActivity.this, "Change successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(AdminEditProductActivity.this, AdminControlPanel.class);
                         startActivity(i);
                         finish();
                     }
@@ -88,7 +107,7 @@ public class AdminEditProductActivity extends AppCompatActivity {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     String pName = snapshot.child("pname").getValue().toString();
                     String pPrice = snapshot.child("price").getValue().toString();
                     String pDesc = snapshot.child("desc").getValue().toString();
@@ -98,7 +117,6 @@ public class AdminEditProductActivity extends AppCompatActivity {
                     edPrice.setText(pPrice);
                     edDesc.setText(pDesc);
                     Picasso.get().load(pImage).into(imgProduct);
-
 
 
                 }
@@ -112,13 +130,11 @@ public class AdminEditProductActivity extends AppCompatActivity {
     }
 
     private void InitUI() {
-
         edName = findViewById(R.id.ed_name_edit);
         edPrice = findViewById(R.id.ed_price_edit);
         edDesc = findViewById(R.id.ed_desc_edit);
         imgProduct = findViewById(R.id.img_edit_product);
         btnApply = findViewById(R.id.btn_apply_change);
+        btnDelete = findViewById(R.id.btn_delete_change);
     }
-
-
 }
