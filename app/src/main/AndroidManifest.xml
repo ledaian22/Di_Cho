@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Di_Cho"
         tools:replace="android:theme">
         <activity
+            android:name=".Admin.AdminApproveProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Seller.SellerHomeActivity"
             android:exported="false" />
         <activity
@@ -50,10 +56,10 @@
             android:name=".InfoappScreen"
             android:exported="false" />
         <activity
-            android:name=".Admin.AdminControlPanel"
+            android:name=".Seller.SellerCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AdminAddProduct"
+            android:name=".Seller.SellerAddNewProduct"
             android:exported="false" />
         <activity
             android:name=".IntroSlide2"

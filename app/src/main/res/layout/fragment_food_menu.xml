@@ -53,7 +53,7 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/foodMenuSeeMore"
+                    android:id="@+id/tv_topFoodMenuSeeMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="130dp"

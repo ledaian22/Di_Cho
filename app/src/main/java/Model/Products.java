@@ -3,20 +3,9 @@ package Model;
 import java.io.Serializable;
 
 public class Products implements Serializable {
-    private String pname, desc, price,image,catergory,pid,date,time;
+    private String pname, desc, price,image,catergory,pid,date,time, productStatus;
 
     public Products() {
-    }
-
-    public Products(String pname, String desc, String price, String image, String catergory, String pid, String date, String time) {
-        this.pname = pname;
-        this.desc = desc;
-        this.price = price;
-        this.image = image;
-        this.catergory = catergory;
-        this.pid = pid;
-        this.date = date;
-        this.time = time;
     }
 
     public String getPname() {
@@ -81,5 +70,25 @@ public class Products implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(String productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public Products(String pname, String desc, String price, String image, String catergory, String pid, String date, String time, String productStatus) {
+        this.pname = pname;
+        this.desc = desc;
+        this.price = price;
+        this.image = image;
+        this.catergory = catergory;
+        this.pid = pid;
+        this.date = date;
+        this.time = time;
+        this.productStatus = productStatus;
     }
 }

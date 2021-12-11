@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.ViewHolder.ProductViewHolder;
 import com.example.di_cho.Admin.AdminEditProductActivity;
@@ -42,6 +43,7 @@ public class FoodMenuFragment extends Fragment {
     private Toolbar toolbar;
     private DatabaseReference ProductsRef;
     private SearchView searchView;
+    private TextView seeMoreTop, seeMoreBottom;
     RecyclerView rvTop, rvBottom;
     private String fragPermission;
 
@@ -52,6 +54,22 @@ public class FoodMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
+        //See more Init
+        seeMoreTop = v.findViewById(R.id.tv_topFoodMenuSeeMore);
+//        seeMoreTop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle queryHolder = new Bundle();
+//                queryHolder.putString("Category","Food");
+//                SeeMoreFragment seeMoreFragment = new SeeMoreFragment();
+//                seeMoreFragment.setArguments(queryHolder);
+//                FragmentManager fm = getFragmentManager();
+//
+//                fm.beginTransaction().replace(R.id.frament_container,seeMoreFragment).addToBackStack(null)
+//                        .commit();
+//            }
+//        });
+        seeMoreBottom = v.findViewById(R.id.tv_bottomFoodMenuSeeMore);
 
         //Get Permission Event Bus
         if (!EventBus.getDefault().isRegistered(this)) {
@@ -89,7 +107,7 @@ public class FoodMenuFragment extends Fragment {
         //Firebase query
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef,Products.class).build();
+                        .setQuery(ProductsRef.orderByChild("productStatus").equalTo("Approved"),Products.class).build();
         //TopAdapter
         FirebaseRecyclerAdapter<Products, ProductViewHolder> topAdapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {

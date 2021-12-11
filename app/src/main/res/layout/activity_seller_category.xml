@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:flow_horizontalAlign="center"
-    tools:context=".Admin.AdminControlPanel">
+    tools:context=".Seller.SellerCategoryActivity">
 
     <Button
         android:id="@+id/btnAddDoAn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_shape"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="102dp"
         android:text="Add Do An"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +22,11 @@
 
     <Button
         android:id="@+id/btnAddDoUong"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_shape"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="26dp"
         android:text="Add Do Duong"
         app:layout_constraintStart_toStartOf="@+id/btnAddDoAn"
@@ -28,8 +34,11 @@
 
     <Button
         android:id="@+id/btnAddTrangMieng"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_shape"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="38dp"
         android:text="Add Trang Mieng"
         app:layout_constraintStart_toStartOf="@+id/btnAddDoUong"
@@ -37,13 +46,16 @@
 
     <Button
         android:id="@+id/btnAddDacBiet"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_shape"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="31dp"
         android:text="Add Dac Biet"
         app:layout_constraintStart_toStartOf="@+id/btnAddTrangMieng"
         app:layout_constraintTop_toBottomOf="@+id/btnAddTrangMieng" />
-
+<!-->
     <Button
         android:id="@+id/btnAdminLogout"
         android:layout_width="wrap_content"
@@ -75,5 +87,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnCheckOder"
         app:layout_constraintStart_toStartOf="parent" />
-
+<-->
 </androidx.constraintlayout.widget.ConstraintLayout>

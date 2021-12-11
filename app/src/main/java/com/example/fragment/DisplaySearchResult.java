@@ -106,6 +106,8 @@ public class DisplaySearchResult extends Fragment {
         return v;
     }
 
+
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar_menu,menu);

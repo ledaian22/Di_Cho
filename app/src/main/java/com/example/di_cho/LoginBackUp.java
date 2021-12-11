@@ -16,11 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Prevalent.Prevalent;
-import com.example.di_cho.Admin.AdminControlPanel;
-import com.example.di_cho.Seller.SellerHomeActivity;
+import com.example.di_cho.Admin.AdminHomeActivity;
 import com.example.di_cho.Seller.SellerRegActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +51,7 @@ public class LoginBackUp extends AppCompatActivity {
         isSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().postSticky(new Message("User"));
+                EventBus.getDefault().postSticky(new Message("Seller"));
                 Intent i  = new Intent(LoginBackUp.this, SellerRegActivity.class);
                 startActivity(i);
             }
@@ -63,6 +60,7 @@ public class LoginBackUp extends AppCompatActivity {
         isAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EventBus.getDefault().postSticky(new Message("Admin"));
                 btnLogin.setText("Login as Admin");
                 isAdmin.setVisibility(View.INVISIBLE);
                 isNotAdmin.setVisibility(View.VISIBLE);
@@ -148,7 +146,8 @@ public class LoginBackUp extends AppCompatActivity {
                             if (parentDbName.equals("Admins")){
                                 Toast.makeText(LoginBackUp.this,"Logged as Admin",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent i  = new Intent(LoginBackUp.this, AdminControlPanel.class);
+                                EventBus.getDefault().postSticky(new Message("Admin"));
+                                Intent i  = new Intent(LoginBackUp.this, AdminHomeActivity.class);
                                 startActivity(i);
                             }
                             //Check Login as User
