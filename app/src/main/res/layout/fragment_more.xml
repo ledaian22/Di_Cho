@@ -1,155 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/icon_back"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <TextView
-        android:id="@+id/txt_them"
-        android:layout_width="200dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:text="Thêm"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/buy"
-        android:layout_width="50dp"
-        android:layout_height="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txt_them"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/icon_buy"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_ban_hang"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_sellwithus"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/banhangcungdicho_icon"
+        android:drawableRight="@drawable/next_icon"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:src="@drawable/banhangcungdicho_icon"
-        app:layout_constraintTop_toTopOf="@+id/txt_ban_hang"
-        app:layout_constraintStart_toStartOf="@+id/txt_ban_hang"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_ban_hang"/>
-
-    <TextView
-        android:id="@+id/txt_ban_hang"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="100dp"
-        android:background="@color/pale"
+        android:layout_below="@+id/appbar"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/text_input_bg"
         android:gravity="center"
+        android:padding="20dp"
         android:text="Bán hàng cùng đi chợ"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_them" />
+        android:textSize="20dp" />
+
 
     <TextView
-        android:id="@+id/txt_don_hang"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/pale"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/tuihang_icon"
+        android:drawableRight="@drawable/next_icon"
+
+        android:id="@+id/tv_my_bill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_sellwithus"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/text_input_bg"
         android:gravity="center"
+        android:padding="20dp"
         android:text="Đơn hàng của tôi"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ban_hang" />
+        android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/txt_nhan_tin"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/pale"
+        android:drawableLeft="@drawable/thongbao_icon"
+        android:drawableRight="@drawable/next_icon"
+
+        android:id="@+id/tv_noti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_my_bill"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/text_input_bg"
         android:gravity="center"
+        android:padding="20dp"
+        android:text="Thông Báo"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:drawableLeft="@drawable/nhantin_icon"
+        android:drawableRight="@drawable/next_icon"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_noti"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/text_input_bg"
+        android:gravity="center"
+        android:padding="20dp"
         android:text="Tin nhắn"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_thong_bao" />
+        android:textSize="20dp" />
+
 
     <TextView
-        android:id="@+id/txt_thong_tin_ud"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/pale"
+        android:id="@+id/tv_info"
+        android:drawableLeft="@drawable/thongtin_icon"
+        android:drawableRight="@drawable/next_icon"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_message"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/text_input_bg"
         android:gravity="center"
-        android:text="Thông tin về ứng dụng"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nhan_tin" />
+        android:padding="20dp"
+        android:text="Thông tin ứng dụng"
+        android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txt_thong_bao"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/pale"
-        android:gravity="center"
-        android:text="Thông báo"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_don_hang" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_don_hang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:src="@drawable/tuihang_icon"
-        app:layout_constraintTop_toTopOf="@+id/txt_don_hang"
-        app:layout_constraintStart_toStartOf="@+id/txt_don_hang"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_don_hang"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_thong_bao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:src="@drawable/thongbao_icon"
-        app:layout_constraintTop_toTopOf="@+id/txt_thong_bao"
-        app:layout_constraintStart_toStartOf="@+id/txt_thong_bao"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_thong_bao"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_nhan_tin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:src="@drawable/nhantin_icon"
-        app:layout_constraintTop_toTopOf="@+id/txt_nhan_tin"
-        app:layout_constraintStart_toStartOf="@+id/txt_nhan_tin"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_nhan_tin"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_thong_tin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:src="@drawable/thongtin_icon"
-        app:layout_constraintTop_toTopOf="@+id/txt_thong_tin_ud"
-        app:layout_constraintStart_toStartOf="@+id/txt_thong_tin_ud"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_thong_tin_ud"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

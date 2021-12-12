@@ -56,20 +56,33 @@ public class FoodMenuFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_food_menu, container, false);
         //See more Init
         seeMoreTop = v.findViewById(R.id.tv_topFoodMenuSeeMore);
-//        seeMoreTop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Bundle queryHolder = new Bundle();
-//                queryHolder.putString("Category","Food");
-//                SeeMoreFragment seeMoreFragment = new SeeMoreFragment();
-//                seeMoreFragment.setArguments(queryHolder);
-//                FragmentManager fm = getFragmentManager();
-//
-//                fm.beginTransaction().replace(R.id.frament_container,seeMoreFragment).addToBackStack(null)
-//                        .commit();
-//            }
-//        });
+        seeMoreTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle queryHolder = new Bundle();
+                queryHolder.putString("Category","Food");
+                SeeMoreFragment seeMoreFragment = new SeeMoreFragment();
+                seeMoreFragment.setArguments(queryHolder);
+                FragmentManager fm = getFragmentManager();
+
+                fm.beginTransaction().replace(R.id.frament_container,seeMoreFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
         seeMoreBottom = v.findViewById(R.id.tv_bottomFoodMenuSeeMore);
+        seeMoreBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle queryHolder = new Bundle();
+                queryHolder.putString("Category","Food");
+                SeeMoreFragment seeMoreFragment = new SeeMoreFragment();
+                seeMoreFragment.setArguments(queryHolder);
+                FragmentManager fm = getFragmentManager();
+
+                fm.beginTransaction().replace(R.id.frament_container,seeMoreFragment).addToBackStack(null)
+                        .commit();
+            }
+        });
 
         //Get Permission Event Bus
         if (!EventBus.getDefault().isRegistered(this)) {
@@ -107,7 +120,7 @@ public class FoodMenuFragment extends Fragment {
         //Firebase query
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef.orderByChild("productStatus").equalTo("Approved"),Products.class).build();
+                        .setQuery(ProductsRef.orderByChild("catergory").equalTo("Food"),Products.class).build();
         //TopAdapter
         FirebaseRecyclerAdapter<Products, ProductViewHolder> topAdapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
@@ -162,17 +175,25 @@ public class FoodMenuFragment extends Fragment {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //Passing data to Fragment using Bundle
-                                Bundle dataHolder = new Bundle();
-                                dataHolder.putString("pid",model.getPid());
-                                ProductDetailFragment productDetailFragment = new ProductDetailFragment();
-                                //Set bundle data to Fragment
-                                productDetailFragment.setArguments(dataHolder);
-                                //Transfer to Fragment
-                                FragmentManager fm = getFragmentManager();
-                                fm.beginTransaction().replace(R.id.frament_container,productDetailFragment).addToBackStack(null)
-                                        .commit();
-
+                                //Check if admin
+                                if (fragPermission.equals("Admin")) {
+                                    Intent i = new Intent(getActivity(),AdminEditProductActivity.class);
+                                    Bundle pidHolder = new Bundle();
+                                    pidHolder.putString("pid", model.getPid());
+                                    i.putExtra("pid",model.getPid());
+                                    startActivity(i);
+                                } else {
+                                    //Passing data to Fragment using Bundle
+                                    Bundle dataHolder = new Bundle();
+                                    dataHolder.putString("pid", model.getPid());
+                                    ProductDetailFragment productDetailFragment = new ProductDetailFragment();
+                                    //Set bundle data to Fragment
+                                    productDetailFragment.setArguments(dataHolder);
+                                    //Transfer to Fragment
+                                    FragmentManager fm = getFragmentManager();
+                                    fm.beginTransaction().replace(R.id.frament_container, productDetailFragment).addToBackStack(null)
+                                            .commit();
+                                }
                             }
                         });
                     }

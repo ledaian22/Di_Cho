@@ -61,13 +61,13 @@ public class DisplaySearchResult extends Fragment {
         //Search Process
         DatabaseReference reference = FirebaseDatabase.getInstance("https://login-b73c7-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Products");
         FirebaseRecyclerOptions<Products> searchOption = new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(reference.orderByChild("pname").startAt(searchQuery),Products.class)
+                .setQuery(reference.orderByChild("pname").startAt(searchQuery).endAt(searchQuery+"\uf8ff"),Products.class)
                 .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(searchOption) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                 holder.tvProductName.setText(model.getPname());
-                Picasso.get().load(model.getImage()).into(holder.imgProduct);
+                Picasso.get().load(model.getImage()).resize(100,100).centerCrop().into(holder.imgProduct);
                 //Set OnClick Item
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

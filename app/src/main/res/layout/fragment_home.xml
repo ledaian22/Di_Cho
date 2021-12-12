@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+
     <ImageView
+
+        android:layout_width="92dp"
+        android:layout_height="701dp"
         android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@drawable/sidebar_bg"/>
+        android:src="@drawable/sidebar_bg" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -48,28 +50,26 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/menufood_icon" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/doan_icon" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/next_icon"
                         android:padding="10dp"
                         android:text="Đồ ăn"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Quantity"
-                        android:textColor="@color/gray" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -95,28 +95,24 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/menufood_icon" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/douong_icon" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/next_icon"
                         android:padding="10dp"
                         android:text="Đồ uống"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Quantity"
-                        android:textColor="@color/gray" />
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -142,28 +138,24 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/menufood_icon" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/dessert_icon" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/next_icon"
                         android:padding="10dp"
                         android:text="Tráng miệng"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Quantity"
-                        android:textColor="@color/gray" />
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -189,28 +181,24 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/menufood_icon" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/combo_icon" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/next_icon"
                         android:padding="10dp"
-                        android:text="Khuyến mãi"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Quantity"
-                        android:textColor="@color/gray" />
+                        android:text="Đặc biệt"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
             </LinearLayout>

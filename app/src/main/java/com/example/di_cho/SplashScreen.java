@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.greenrobot.eventbus.EventBus;
+
+import Model.Message;
+
 //Đại An chuyển màn
 
 public class SplashScreen extends AppCompatActivity {
@@ -22,6 +26,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
+        EventBus.getDefault().postSticky(new Message("Guest"));
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -38,11 +43,11 @@ public class SplashScreen extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             //Chưa đăng nhập
-            Intent intent = new Intent(this, LoginBackUp.class);
+            Intent intent = new Intent(this, IntroSlide1.class);
             startActivity(intent);
         } else {
             //Đã đăng nhập
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, LoginBackUp.class);
             startActivity(intent);
         }
         finish();

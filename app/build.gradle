@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    //Crop Image
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     //Cache Object
     implementation 'com.github.kimkevin:cachepot:1.2.0'
     implementation("org.greenrobot:eventbus:3.3.0")

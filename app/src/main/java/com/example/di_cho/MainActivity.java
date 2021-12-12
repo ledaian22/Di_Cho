@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.Prevalent.Prevalent;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.MenuFragment;
 import com.example.fragment.MoreFragment;
@@ -31,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Toast.makeText(MainActivity.this,"Welcome " + Prevalent.currentonlineUser.getName(),Toast.LENGTH_SHORT).show();
         //Event Bus
 
         //Check
-        type = getIntent().getExtras().getString("Permission");
+//        type = getIntent().getExtras().getString("Permission");
         Log.d("Activity Permission", ""+type);
         //Bundle
         //anh xa

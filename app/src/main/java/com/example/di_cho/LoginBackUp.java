@@ -152,7 +152,6 @@ public class LoginBackUp extends AppCompatActivity {
                             }
                             //Check Login as User
                             else if (parentDbName.equals("Users")) {
-                                Toast.makeText(LoginBackUp.this,"Welcome",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent i  = new Intent(LoginBackUp.this, MainActivity.class);
                                 EventBus.getDefault().postSticky(new Message("User"));

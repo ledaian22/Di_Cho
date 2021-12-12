@@ -125,14 +125,15 @@
 
         <!--Add to Cart-->
 
-                <Button
-                    android:id="@+id/btn_add_to_cart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/quantity_holder"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/rounded_shape"
-                    android:text="Thêm vào giỏ hàng" />
+        <Button
+            android:drawableLeft="@drawable/themvaogiohang_icon"
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/quantity_holder"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_shape"
+            android:text="Thêm vào giỏ hàng" />
 
 
     </RelativeLayout>

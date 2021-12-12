@@ -51,7 +51,7 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:id="@+id/desertMenuSeeMore"
+                    android:id="@+id/tv_topDesertMenuSeeMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Xem thêm"

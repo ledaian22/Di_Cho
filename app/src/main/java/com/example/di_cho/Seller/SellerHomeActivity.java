@@ -104,7 +104,7 @@ public class SellerHomeActivity extends AppCompatActivity {
 
                         }
 
-                        Picasso.get().load(model.getImage()).into(holder.imgProduct);
+                        Picasso.get().load(model.getImage()).resize(400,400).centerCrop().into(holder.imgProduct);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

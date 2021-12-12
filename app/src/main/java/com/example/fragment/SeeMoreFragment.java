@@ -26,6 +26,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -66,14 +67,14 @@ public class SeeMoreFragment extends Fragment {
         //Firebase query
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef.orderByChild("productStatus").equalTo("Approved"),Products.class).build();
+                        .setQuery(ProductsRef.orderByChild("catergory").equalTo(seeMoreQuery),Products.class).build();
         //Adapter
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                         holder.tvProductName.setText(model.getPname());
-                        Picasso.get().load(model.getImage()).into(holder.imgProduct);
+                        Picasso.get().load(model.getImage()).resize(400,400).centerCrop().into(holder.imgProduct);
                         //Set OnClick Item
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -105,7 +106,7 @@ public class SeeMoreFragment extends Fragment {
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_list_item_view,parent,false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_list_item_view_vertical,parent,false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }
